@@ -306,6 +306,63 @@
             line-height: 1.7;
         }
         
+        /* Diagrams */
+        .diagram {
+            background: var(--card);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 1.5rem;
+            margin: 2rem 0;
+            overflow-x: auto;
+        }
+        
+        .diagram svg {
+            display: block;
+            max-width: 100%;
+            height: auto;
+            margin: 0 auto;
+        }
+        
+        .diagram-title {
+            font-family: 'Inter', sans-serif;
+            font-size: 14px;
+            font-weight: 600;
+            fill: var(--text);
+        }
+        
+        .diagram-label {
+            font-family: 'Inter', sans-serif;
+            font-size: 12px;
+            fill: var(--text-light);
+        }
+        
+        .diagram-label-small {
+            font-family: 'Inter', sans-serif;
+            font-size: 10px;
+            fill: var(--text-light);
+        }
+        
+        .diagram-label-green {
+            font-family: 'Inter', sans-serif;
+            font-size: 12px;
+            font-weight: 500;
+            fill: var(--accent);
+        }
+        
+        .diagram-alert {
+            font-family: 'Inter', sans-serif;
+            font-size: 12px;
+            font-weight: 500;
+            fill: #c0392b;
+        }
+        
+        .diagram-success {
+            font-family: 'Inter', sans-serif;
+            font-size: 12px;
+            font-weight: 500;
+            fill: var(--accent);
+        }
+        
         /* Responsive */
         @media (max-width: 600px) {
             body { font-size: 17px; }
@@ -391,6 +448,27 @@
                 
                 <p>Pet shop mice, by contrast, have lived. They've been exposed to viruses, bacteria, parasites — the full menagerie of microorganisms that mice (and humans) would normally encounter. When researchers tested them, they found dozens of different pathogens and a rich, diverse microbiome.</p>
                 
+                <!-- Two Mice Comparison -->
+                <div class="diagram">
+                    <svg viewBox="0 0 700 200" xmlns="http://www.w3.org/2000/svg">
+                        <!-- Lab Mouse -->
+                        <rect x="30" y="30" width="280" height="140" rx="12" fill="#f8f9fa" stroke="#e8e8e0" stroke-width="2"/>
+                        <text x="170" y="60" text-anchor="middle" class="diagram-title">🧪 Laboratory Mouse</text>
+                        <text x="170" y="85" text-anchor="middle" class="diagram-label">Sterile environment</text>
+                        <text x="170" y="105" text-anchor="middle" class="diagram-label">No pathogen exposure</text>
+                        <text x="170" y="125" text-anchor="middle" class="diagram-label">Limited microbiome</text>
+                        <text x="170" y="155" text-anchor="middle" class="diagram-label-small" style="fill: #c0392b;">Immune system: "blank slate"</text>
+                        
+                        <!-- Pet Shop Mouse -->
+                        <rect x="390" y="30" width="280" height="140" rx="12" fill="#d8f3dc" stroke="#2d6a4f" stroke-width="2"/>
+                        <text x="530" y="60" text-anchor="middle" class="diagram-title">🐭 Pet Shop Mouse</text>
+                        <text x="530" y="85" text-anchor="middle" class="diagram-label">Rich microbial environment</text>
+                        <text x="530" y="105" text-anchor="middle" class="diagram-label">Dozens of pathogens</text>
+                        <text x="530" y="125" text-anchor="middle" class="diagram-label">Diverse microbiome</text>
+                        <text x="530" y="155" text-anchor="middle" class="diagram-label-small" style="fill: #2d6a4f;">Immune system: "educated"</text>
+                    </svg>
+                </div>
+                
                 <p>The question: would pet shop mice be protected from allergies?</p>
                 
                 <h3>The Test</h3>
@@ -433,6 +511,69 @@
                 <p>Here's what the researchers found: pet shop mice produced both IgE <em>and</em> IgG against the allergen. But their IgG levels were dramatically higher than laboratory mice. The ratio was completely different.</p>
                 
                 <p>Think of it like a race. In lab mice, the IgE antibodies get to the allergen first and trigger the reaction. In pet shop mice, the IgG antibodies intercept the allergen before IgE can cause problems. Same allergen, same IgE — different outcome.</p>
+                
+                <!-- Antibody Mechanism Diagram -->
+                <div class="diagram">
+                    <svg viewBox="0 0 700 280" xmlns="http://www.w3.org/2000/svg">
+                        <!-- Lab Mouse Side -->
+                        <text x="175" y="25" text-anchor="middle" class="diagram-title">Laboratory Mouse</text>
+                        
+                        <!-- Allergen -->
+                        <circle cx="175" cy="70" r="20" fill="#f4a261"/>
+                        <text x="175" y="75" text-anchor="middle" class="diagram-label-small">Allergen</text>
+                        
+                        <!-- Arrow down -->
+                        <path d="M175 95 L175 120" stroke="#666" stroke-width="2" marker-end="url(#arrow)"/>
+                        
+                        <!-- IgE (few IgG) -->
+                        <text x="175" y="145" text-anchor="middle" class="diagram-label">Few IgG antibodies</text>
+                        
+                        <!-- Arrow down -->
+                        <path d="M175 155 L175 180" stroke="#666" stroke-width="2" marker-end="url(#arrow)"/>
+                        
+                        <!-- Mast cell with IgE -->
+                        <ellipse cx="175" cy="210" rx="50" ry="30" fill="#c0392b" opacity="0.2" stroke="#c0392b" stroke-width="2"/>
+                        <text x="175" y="205" text-anchor="middle" class="diagram-label-small">Mast Cell</text>
+                        <text x="175" y="220" text-anchor="middle" class="diagram-label-small">+ IgE</text>
+                        
+                        <!-- Explosion/reaction -->
+                        <text x="175" y="260" text-anchor="middle" class="diagram-alert">⚠️ Allergic Reaction</text>
+                        
+                        <!-- Divider -->
+                        <line x1="350" y1="20" x2="350" y2="270" stroke="#e8e8e0" stroke-width="2" stroke-dasharray="5,5"/>
+                        
+                        <!-- Pet Shop Mouse Side -->
+                        <text x="525" y="25" text-anchor="middle" class="diagram-title">Pet Shop Mouse</text>
+                        
+                        <!-- Allergen -->
+                        <circle cx="525" cy="70" r="20" fill="#f4a261"/>
+                        <text x="525" y="75" text-anchor="middle" class="diagram-label-small">Allergen</text>
+                        
+                        <!-- Arrow down -->
+                        <path d="M525 95 L525 120" stroke="#666" stroke-width="2" marker-end="url(#arrow)"/>
+                        
+                        <!-- IgG shield -->
+                        <rect x="475" y="130" width="100" height="40" rx="8" fill="#2d6a4f" opacity="0.2" stroke="#2d6a4f" stroke-width="2"/>
+                        <text x="525" y="155" text-anchor="middle" class="diagram-label-green">IgG Intercepts</text>
+                        
+                        <!-- X mark - blocked -->
+                        <text x="525" y="200" text-anchor="middle" style="font-size: 24px;">🛡️</text>
+                        
+                        <!-- Mast cell - calm -->
+                        <ellipse cx="525" cy="230" rx="50" ry="25" fill="#2d6a4f" opacity="0.1" stroke="#2d6a4f" stroke-width="2"/>
+                        <text x="525" y="235" text-anchor="middle" class="diagram-label-small">Mast Cell (inactive)</text>
+                        
+                        <!-- Protected -->
+                        <text x="525" y="270" text-anchor="middle" class="diagram-success">✓ Protected</text>
+                        
+                        <!-- Arrow marker definition -->
+                        <defs>
+                            <marker id="arrow" markerWidth="10" markerHeight="10" refX="9" refY="3" orient="auto" markerUnits="strokeWidth">
+                                <path d="M0,0 L0,6 L9,3 z" fill="#666"/>
+                            </marker>
+                        </defs>
+                    </svg>
+                </div>
                 
                 <div class="finding">
                     <h4>The Key Finding</h4>
@@ -515,6 +656,46 @@
                 <p>Early in life, before the pet shop mice had accumulated their protective immune memory, they were vulnerable — just like laboratory mice, just like human infants. But once that memory was established, the window closed. They could no longer be made allergic through normal means.</p>
                 
                 <p>This mirrors what we see in humans. Most allergies develop in infancy and early childhood. Adults rarely develop new allergies. There appears to be a critical period during which the immune "thermostat" is set.</p>
+                
+                <!-- Critical Window Diagram -->
+                <div class="diagram">
+                    <svg viewBox="0 0 700 160" xmlns="http://www.w3.org/2000/svg">
+                        <!-- Timeline base -->
+                        <line x1="50" y1="80" x2="650" y2="80" stroke="#ccc" stroke-width="3"/>
+                        
+                        <!-- Birth marker -->
+                        <circle cx="100" cy="80" r="8" fill="#666"/>
+                        <text x="100" y="110" text-anchor="middle" class="diagram-label">Birth</text>
+                        
+                        <!-- Critical window zone -->
+                        <rect x="100" y="60" width="200" height="40" fill="#c0392b" opacity="0.15" rx="4"/>
+                        <text x="200" y="45" text-anchor="middle" class="diagram-alert">Vulnerable Window</text>
+                        <text x="200" y="135" text-anchor="middle" class="diagram-label-small">Allergen exposure here → allergy</text>
+                        
+                        <!-- Transition zone -->
+                        <rect x="300" y="60" width="100" height="40" fill="#f4a261" opacity="0.2" rx="4"/>
+                        <text x="350" y="45" text-anchor="middle" class="diagram-label" style="fill: #e76f51;">Transition</text>
+                        
+                        <!-- Protected zone -->
+                        <rect x="400" y="60" width="200" height="40" fill="#2d6a4f" opacity="0.15" rx="4"/>
+                        <text x="500" y="45" text-anchor="middle" class="diagram-success">Protected Period</text>
+                        <text x="500" y="135" text-anchor="middle" class="diagram-label-small">Allergen exposure here → protection</text>
+                        
+                        <!-- Adult marker -->
+                        <circle cx="600" cy="80" r="8" fill="#666"/>
+                        <text x="600" y="110" text-anchor="middle" class="diagram-label">Adult</text>
+                        
+                        <!-- Immune memory accumulation arrow -->
+                        <path d="M120 25 L580 25" stroke="#2d6a4f" stroke-width="2" marker-end="url(#arrow-green)" stroke-dasharray="5,3"/>
+                        <text x="350" y="18" text-anchor="middle" class="diagram-label-small" style="fill: #2d6a4f;">Immune memory accumulating →</text>
+                        
+                        <defs>
+                            <marker id="arrow-green" markerWidth="10" markerHeight="10" refX="9" refY="3" orient="auto">
+                                <path d="M0,0 L0,6 L9,3 z" fill="#2d6a4f"/>
+                            </marker>
+                        </defs>
+                    </svg>
+                </div>
             </section>
             
             <!-- Section 5: The Reversal -->
@@ -557,10 +738,51 @@
                 
                 <p>This study suggests the mechanism is <em>immune imprinting</em>. Diverse microbial exposure in early life builds a library of cross-reactive immune memory that biases the system towards protective responses. When a new antigen arrives — whether it's a harmless food protein or a pollen grain — the immune system already has partial memory of something similar. That memory guides the response towards IgG (protection) rather than IgE (allergy).</p>
                 
-                <div class="metaphor">
-                    <div class="emoji">📚</div>
-                    <p><strong>The Library Analogy</strong><br>
-                    Imagine your immune system as a library of responses. In a sterile environment, the library stays nearly empty. When something new arrives, the librarian panics and files it under "threat" (IgE). In a microbially rich environment, the library is vast. Something new arrives, and the librarian says "oh, this is similar to something we've seen before" and files it appropriately (IgG).</p>
+                <!-- Library Diagram -->
+                <div class="diagram">
+                    <svg viewBox="0 0 700 220" xmlns="http://www.w3.org/2000/svg">
+                        <!-- Empty Library -->
+                        <rect x="30" y="40" width="280" height="150" rx="12" fill="#f8f9fa" stroke="#e8e8e0" stroke-width="2"/>
+                        <text x="170" y="30" text-anchor="middle" class="diagram-title">Sterile Environment</text>
+                        
+                        <!-- Few books -->
+                        <rect x="60" y="100" width="12" height="50" fill="#ddd" rx="2"/>
+                        <rect x="80" y="110" width="12" height="40" fill="#ddd" rx="2"/>
+                        <rect x="100" y="105" width="12" height="45" fill="#ddd" rx="2"/>
+                        
+                        <text x="170" y="75" text-anchor="middle" class="diagram-label">Nearly empty library</text>
+                        <text x="170" y="175" text-anchor="middle" class="diagram-label-small">"What is this?! THREAT!"</text>
+                        <text x="240" y="130" text-anchor="middle" class="diagram-alert">→ IgE</text>
+                        
+                        <!-- Full Library -->
+                        <rect x="390" y="40" width="280" height="150" rx="12" fill="#d8f3dc" stroke="#2d6a4f" stroke-width="2"/>
+                        <text x="530" y="30" text-anchor="middle" class="diagram-title">Rich Environment</text>
+                        
+                        <!-- Many books -->
+                        <rect x="420" y="90" width="10" height="55" fill="#2d6a4f" opacity="0.4" rx="1"/>
+                        <rect x="432" y="95" width="10" height="50" fill="#2d6a4f" opacity="0.5" rx="1"/>
+                        <rect x="444" y="85" width="10" height="60" fill="#2d6a4f" opacity="0.4" rx="1"/>
+                        <rect x="456" y="100" width="10" height="45" fill="#2d6a4f" opacity="0.6" rx="1"/>
+                        <rect x="468" y="90" width="10" height="55" fill="#2d6a4f" opacity="0.5" rx="1"/>
+                        <rect x="480" y="95" width="10" height="50" fill="#2d6a4f" opacity="0.4" rx="1"/>
+                        <rect x="492" y="85" width="10" height="60" fill="#2d6a4f" opacity="0.5" rx="1"/>
+                        <rect x="504" y="100" width="10" height="45" fill="#2d6a4f" opacity="0.6" rx="1"/>
+                        <rect x="516" y="90" width="10" height="55" fill="#2d6a4f" opacity="0.4" rx="1"/>
+                        <rect x="528" y="95" width="10" height="50" fill="#2d6a4f" opacity="0.5" rx="1"/>
+                        <rect x="540" y="88" width="10" height="57" fill="#2d6a4f" opacity="0.4" rx="1"/>
+                        <rect x="552" y="100" width="10" height="45" fill="#2d6a4f" opacity="0.6" rx="1"/>
+                        <rect x="564" y="92" width="10" height="53" fill="#2d6a4f" opacity="0.5" rx="1"/>
+                        <rect x="576" y="97" width="10" height="48" fill="#2d6a4f" opacity="0.4" rx="1"/>
+                        <rect x="588" y="85" width="10" height="60" fill="#2d6a4f" opacity="0.5" rx="1"/>
+                        <rect x="600" y="95" width="10" height="50" fill="#2d6a4f" opacity="0.6" rx="1"/>
+                        <rect x="612" y="90" width="10" height="55" fill="#2d6a4f" opacity="0.4" rx="1"/>
+                        <rect x="624" y="100" width="10" height="45" fill="#2d6a4f" opacity="0.5" rx="1"/>
+                        
+                        <text x="530" y="75" text-anchor="middle" class="diagram-label">Vast memory library</text>
+                        <text x="530" y="175" text-anchor="middle" class="diagram-label-small">"Seen something like this before"</text>
+                        <text x="640" y="130" text-anchor="middle" class="diagram-success">→ IgG</text>
+                    </svg>
+                    <p style="text-align: center; font-size: 0.9rem; color: var(--text-light); margin-top: 1rem; margin-bottom: 0;"><strong>The Library Analogy:</strong> A rich microbial environment builds a vast library of immune memories. New antigens get matched to existing records and handled calmly.</p>
                 </div>
                 
                 <h3>The Implications</h3>
