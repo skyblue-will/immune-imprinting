@@ -1,0 +1,379 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Allergy Epidemic — Chapter 1</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        
+        :root {
+            --text: #1a1a2e;
+            --text-light: #4a4a6a;
+            --accent: #059669;
+            --accent-light: #d1fae5;
+            --bg: #fdfdf9;
+            --card: #ffffff;
+            --border: #e8e8e0;
+        }
+        
+        html { scroll-behavior: smooth; }
+        
+        body {
+            font-family: 'Newsreader', Georgia, serif;
+            background: var(--bg);
+            color: var(--text);
+            font-size: 19px;
+            line-height: 1.75;
+        }
+        
+        a { color: var(--accent); text-decoration: none; }
+        a:hover { text-decoration: underline; }
+        
+        /* Navigation */
+        nav {
+            padding: 1.25rem 1.5rem;
+            border-bottom: 1px solid var(--border);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-family: 'Inter', sans-serif;
+            font-size: 0.85rem;
+        }
+        
+        nav a { color: var(--text-light); }
+        nav a:hover { color: var(--accent); text-decoration: none; }
+        
+        .nav-chapter {
+            color: var(--text);
+            font-weight: 500;
+        }
+        
+        /* Container */
+        .container {
+            max-width: 720px;
+            margin: 0 auto;
+            padding: 0 1.5rem;
+        }
+        
+        /* Chapter header */
+        .chapter-header {
+            padding: 4rem 0 3rem;
+            border-bottom: 1px solid var(--border);
+            margin-bottom: 3rem;
+        }
+        
+        .chapter-label {
+            font-family: 'Inter', sans-serif;
+            font-size: 0.75rem;
+            letter-spacing: 0.15em;
+            text-transform: uppercase;
+            color: var(--accent);
+            margin-bottom: 1rem;
+        }
+        
+        .chapter-header h1 {
+            font-size: 2.5rem;
+            font-weight: 500;
+            line-height: 1.2;
+            margin-bottom: 1rem;
+        }
+        
+        .chapter-subtitle {
+            font-size: 1.2rem;
+            color: var(--text-light);
+            font-style: italic;
+        }
+        
+        /* Content */
+        article { padding-bottom: 4rem; }
+        
+        article p { margin-bottom: 1.5rem; }
+        
+        article h2 {
+            font-size: 1.5rem;
+            font-weight: 500;
+            margin: 3rem 0 1.5rem;
+        }
+        
+        article h3 {
+            font-size: 1.2rem;
+            font-weight: 500;
+            margin: 2rem 0 1rem;
+        }
+        
+        /* Stat cards */
+        .stat-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1rem;
+            margin: 2rem 0;
+        }
+        
+        .stat-card {
+            background: var(--card);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 1.5rem 1rem;
+            text-align: center;
+        }
+        
+        .stat-card .number {
+            font-family: 'Inter', sans-serif;
+            font-size: 2rem;
+            font-weight: 600;
+            color: var(--accent);
+            line-height: 1;
+        }
+        
+        .stat-card .label {
+            font-family: 'Inter', sans-serif;
+            font-size: 0.8rem;
+            color: var(--text-light);
+            margin-top: 0.5rem;
+        }
+        
+        /* Key point */
+        .key-point {
+            background: var(--accent-light);
+            border-left: 3px solid var(--accent);
+            padding: 1.25rem 1.5rem;
+            margin: 2rem 0;
+            border-radius: 0 8px 8px 0;
+        }
+        
+        .key-point p { margin-bottom: 0; font-size: 1.05rem; }
+        
+        /* Evidence list */
+        .evidence-list {
+            background: var(--card);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 1.5rem 2rem;
+            margin: 2rem 0;
+        }
+        
+        .evidence-list h4 {
+            font-family: 'Inter', sans-serif;
+            font-size: 0.75rem;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            color: var(--accent);
+            margin-bottom: 1rem;
+        }
+        
+        .evidence-list ol {
+            padding-left: 1.25rem;
+        }
+        
+        .evidence-list li {
+            margin: 0.75rem 0;
+        }
+        
+        /* Diagram */
+        .diagram {
+            background: linear-gradient(135deg, #fafbfc 0%, #f5f6f8 100%);
+            border: 1px solid var(--border);
+            border-radius: 16px;
+            padding: 2rem;
+            margin: 2.5rem 0;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.04);
+        }
+        
+        .diagram svg {
+            display: block;
+            max-width: 100%;
+            height: auto;
+            margin: 0 auto;
+        }
+        
+        .diagram-caption {
+            text-align: center;
+            font-family: 'Inter', sans-serif;
+            font-size: 0.85rem;
+            color: var(--text-light);
+            margin-top: 1.25rem;
+            line-height: 1.5;
+        }
+        
+        /* Chapter navigation */
+        .chapter-nav {
+            display: flex;
+            justify-content: space-between;
+            padding: 2rem 0;
+            border-top: 1px solid var(--border);
+            margin-top: 3rem;
+        }
+        
+        .chapter-nav a {
+            font-family: 'Inter', sans-serif;
+            font-size: 0.9rem;
+            color: var(--text-light);
+            display: flex;
+            flex-direction: column;
+            max-width: 45%;
+        }
+        
+        .chapter-nav a:hover { color: var(--accent); text-decoration: none; }
+        
+        .chapter-nav .label {
+            font-size: 0.75rem;
+            letter-spacing: 0.05em;
+            text-transform: uppercase;
+            margin-bottom: 0.25rem;
+        }
+        
+        .chapter-nav .title {
+            font-family: 'Newsreader', serif;
+            font-size: 1.1rem;
+            color: var(--text);
+        }
+        
+        .chapter-nav a:hover .title { color: var(--accent); }
+        
+        .chapter-nav .next { text-align: right; }
+        
+        /* Footer */
+        footer {
+            padding: 2rem 0;
+            text-align: center;
+            border-top: 1px solid var(--border);
+            font-family: 'Inter', sans-serif;
+            font-size: 0.8rem;
+            color: var(--text-light);
+        }
+        
+        /* Responsive */
+        @media (max-width: 600px) {
+            .chapter-header h1 { font-size: 2rem; }
+            .stat-grid { grid-template-columns: 1fr; }
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <a href="index.html">← Home</a>
+        <span class="nav-chapter">Chapter 1 of 7</span>
+        <a href="the-experiment.html">Next →</a>
+    </nav>
+    
+    <div class="container">
+        <header class="chapter-header">
+            <p class="chapter-label">Chapter One</p>
+            <h1>The Allergy Epidemic</h1>
+            <p class="chapter-subtitle">Why allergies have exploded — and why genetics can't explain it</p>
+        </header>
+        
+        <article>
+            <p>Something strange has happened over the past century. Allergies — to food, to pollen, to dust — haven't just increased. They've exploded.</p>
+            
+            <div class="stat-grid">
+                <div class="stat-card">
+                    <div class="number">30-40%</div>
+                    <div class="label">of people in developed countries have allergies</div>
+                </div>
+                <div class="stat-card">
+                    <div class="number">2×</div>
+                    <div class="label">food allergies in children (past 20 years)</div>
+                </div>
+                <div class="stat-card">
+                    <div class="number">3×</div>
+                    <div class="label">asthma rates since the 1960s</div>
+                </div>
+            </div>
+            
+            <p>These numbers demand an explanation. And the obvious candidate — genetics — doesn't work.</p>
+            
+            <h2>The Genetic Problem</h2>
+            
+            <p>Human genes don't change that quickly. Evolution operates over thousands of years, not decades. If allergies have tripled since your grandparents were young, it's not because our DNA has mutated. Something in our <em>environment</em> has changed.</p>
+            
+            <div class="evidence-list">
+                <h4>Three Observations That Point to Environment</h4>
+                <ol>
+                    <li><strong>Geography matters.</strong> Allergy rates vary wildly by location — even among genetically similar populations. Move from a low-allergy country to a high-allergy one, and your risk goes up.</li>
+                    <li><strong>Migration changes risk.</strong> People who emigrate from regions with low allergy rates start developing allergies at the rates of their new home — especially if they move young.</li>
+                    <li><strong>The speed of change.</strong> The rise has been too rapid to be explained by genetics. Whatever is causing this operates on a timescale of years, not generations.</li>
+                </ol>
+            </div>
+            
+            <h2>The Hygiene Hypothesis</h2>
+            
+            <p>There's a theory that's been around since the 1980s: the "hygiene hypothesis." The basic idea is that our immune systems evolved expecting a certain level of microbial exposure — infections, bacteria, parasites — and modern cleanliness has disrupted that expectation.</p>
+            
+            <p>It's not that dirt is good or that infections are beneficial. It's subtler than that. The immune system needs to be <em>calibrated</em>. Without the right early exposures, it might miscalibrate — treating harmless things (pollen, peanuts) as threats.</p>
+            
+            <div class="diagram">
+                <svg viewBox="0 0 600 200" xmlns="http://www.w3.org/2000/svg">
+                    <defs>
+                        <linearGradient id="oldGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+                            <stop offset="0%" style="stop-color:#d1fae5;stop-opacity:1" />
+                            <stop offset="100%" style="stop-color:#a7f3d0;stop-opacity:1" />
+                        </linearGradient>
+                        <linearGradient id="newGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+                            <stop offset="0%" style="stop-color:#fef2f2;stop-opacity:1" />
+                            <stop offset="100%" style="stop-color:#fecaca;stop-opacity:1" />
+                        </linearGradient>
+                    </defs>
+                    
+                    <!-- Old World -->
+                    <rect x="30" y="40" width="240" height="130" rx="12" fill="url(#oldGrad)" stroke="#34d399" stroke-width="1"/>
+                    <text x="150" y="70" text-anchor="middle" style="font-family: Inter; font-size: 12px; font-weight: 600; fill: #047857;">PRE-MODERN WORLD</text>
+                    <text x="150" y="95" text-anchor="middle" style="font-family: Inter; font-size: 10px; fill: #059669;">Diverse microbial exposure</text>
+                    <text x="150" y="115" text-anchor="middle" style="font-family: Inter; font-size: 10px; fill: #059669;">Parasites, infections, soil bacteria</text>
+                    <text x="150" y="135" text-anchor="middle" style="font-family: Inter; font-size: 10px; fill: #059669;">Large families, animals, outdoor life</text>
+                    <text x="150" y="160" text-anchor="middle" style="font-family: Inter; font-size: 11px; font-weight: 500; fill: #047857;">→ Low allergy rates</text>
+                    
+                    <!-- Arrow -->
+                    <path d="M285 105 L315 105" stroke="#9ca3af" stroke-width="2" marker-end="url(#arrow)"/>
+                    <defs>
+                        <marker id="arrow" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto">
+                            <path d="M0,1 L0,7 L7,4 z" fill="#9ca3af"/>
+                        </marker>
+                    </defs>
+                    
+                    <!-- New World -->
+                    <rect x="330" y="40" width="240" height="130" rx="12" fill="url(#newGrad)" stroke="#fca5a5" stroke-width="1"/>
+                    <text x="450" y="70" text-anchor="middle" style="font-family: Inter; font-size: 12px; font-weight: 600; fill: #991b1b;">MODERN WORLD</text>
+                    <text x="450" y="95" text-anchor="middle" style="font-family: Inter; font-size: 10px; fill: #dc2626;">Limited microbial exposure</text>
+                    <text x="450" y="115" text-anchor="middle" style="font-family: Inter; font-size: 10px; fill: #dc2626;">Antibiotics, sanitisation, C-sections</text>
+                    <text x="450" y="135" text-anchor="middle" style="font-family: Inter; font-size: 10px; fill: #dc2626;">Small families, urban, indoor life</text>
+                    <text x="450" y="160" text-anchor="middle" style="font-family: Inter; font-size: 11px; font-weight: 500; fill: #991b1b;">→ High allergy rates</text>
+                </svg>
+                <p class="diagram-caption">The hygiene hypothesis in brief: our modern environment may deprive the immune system of the microbial exposure it evolved to expect.</p>
+            </div>
+            
+            <p>The hypothesis is supported by epidemiological evidence. Children who grow up on farms have lower rates of allergies. So do children with older siblings, children who attend nursery early, and children who have pets. The common thread: more microbial exposure in early life.</p>
+            
+            <h2>But How?</h2>
+            
+            <p>The hygiene hypothesis describes a correlation, not a mechanism. <em>How</em> exactly does early microbial exposure protect against allergies? What happens in the immune system? And why does it matter so much <em>when</em> that exposure happens?</p>
+            
+            <p>These questions remained unanswered for decades. Until a group of researchers decided to study mice from the pet shop.</p>
+            
+            <div class="key-point">
+                <p><strong>The puzzle:</strong> Allergies have exploded too fast to be genetic. Environmental changes are driving it — but the mechanism was unclear. The research in this paper uses a clever model system to uncover how early microbial exposure shapes the immune response.</p>
+            </div>
+            
+            <nav class="chapter-nav">
+                <a href="index.html">
+                    <span class="label">Home</span>
+                    <span class="title">All Chapters</span>
+                </a>
+                <a href="the-experiment.html" class="next">
+                    <span class="label">Next Chapter</span>
+                    <span class="title">The Pet Shop Experiment</span>
+                </a>
+            </nav>
+        </article>
+    </div>
+    
+    <footer>
+        <div class="container">
+            <p>Part of <a href="index.html">Why Pet Shop Mice Don't Get Allergies</a></p>
+        </div>
+    </footer>
+</body>
+</html>

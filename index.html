@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Why Pet Shop Mice Don't Get Allergies — And What That Means For You</title>
+    <title>Why Pet Shop Mice Don't Get Allergies — A Science Explainer</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
     <style>
@@ -12,8 +12,10 @@
         :root {
             --text: #1a1a2e;
             --text-light: #4a4a6a;
-            --accent: #2d6a4f;
-            --accent-light: #d8f3dc;
+            --accent: #059669;
+            --accent-light: #d1fae5;
+            --danger: #dc2626;
+            --danger-light: #fef2f2;
             --bg: #fdfdf9;
             --card: #ffffff;
             --border: #e8e8e0;
@@ -29,1019 +31,344 @@
             line-height: 1.75;
         }
         
-        /* Typography */
-        h1, h2, h3 { font-weight: 500; line-height: 1.3; }
+        a { color: var(--accent); text-decoration: none; }
+        a:hover { text-decoration: underline; }
         
-        h1 { font-size: 2.5rem; margin-bottom: 1rem; }
-        h2 { font-size: 1.8rem; margin-bottom: 1rem; margin-top: 3rem; }
-        h3 { font-size: 1.3rem; margin-bottom: 0.75rem; margin-top: 2rem; }
-        
-        p { margin-bottom: 1.5rem; }
-        
-        a { color: var(--accent); }
-        
-        em { font-style: italic; }
-        strong { font-weight: 600; }
-        
-        /* Layout */
         .container {
-            max-width: 720px;
+            max-width: 900px;
             margin: 0 auto;
             padding: 0 1.5rem;
         }
         
         /* Hero */
         .hero {
-            padding: 4rem 0 3rem;
+            padding: 5rem 0 4rem;
             text-align: center;
-            border-bottom: 1px solid var(--border);
-            margin-bottom: 3rem;
         }
         
-        .hero .label {
+        .hero-label {
             font-family: 'Inter', sans-serif;
             font-size: 0.75rem;
+            letter-spacing: 0.15em;
+            text-transform: uppercase;
+            color: var(--accent);
+            margin-bottom: 1.5rem;
+        }
+        
+        .hero h1 {
+            font-size: 3rem;
+            font-weight: 500;
+            line-height: 1.2;
+            max-width: 700px;
+            margin: 0 auto 1.5rem;
+        }
+        
+        .hero-subtitle {
+            font-size: 1.35rem;
+            color: var(--text-light);
+            font-style: italic;
+            max-width: 550px;
+            margin: 0 auto 2rem;
+        }
+        
+        .hero-meta {
+            font-family: 'Inter', sans-serif;
+            font-size: 0.85rem;
+            color: var(--text-light);
+        }
+        
+        .hero-meta a { color: var(--text-light); text-decoration: underline; }
+        
+        /* Context */
+        .context {
+            background: var(--card);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 2rem;
+            margin: 0 auto 4rem;
+            max-width: 700px;
+        }
+        
+        .context h2 {
+            font-family: 'Inter', sans-serif;
+            font-size: 0.7rem;
             letter-spacing: 0.15em;
             text-transform: uppercase;
             color: var(--accent);
             margin-bottom: 1rem;
         }
         
-        .hero h1 {
-            font-size: 2.75rem;
-            max-width: 600px;
-            margin: 0 auto 1.5rem;
+        .context p {
+            font-size: 1rem;
+            margin-bottom: 1rem;
+            line-height: 1.7;
         }
         
-        .hero .subtitle {
-            font-size: 1.25rem;
-            color: var(--text-light);
-            font-style: italic;
-            max-width: 500px;
-            margin: 0 auto;
+        .context p:last-child { margin-bottom: 0; }
+        
+        /* Chapter Grid */
+        .chapters {
+            padding: 3rem 0 5rem;
         }
         
-        /* Sections */
-        section {
-            padding: 2rem 0 3rem;
-            border-bottom: 1px solid var(--border);
+        .chapters-header {
+            text-align: center;
+            margin-bottom: 3rem;
         }
         
-        section:last-of-type { border-bottom: none; }
-        
-        .section-number {
-            font-family: 'Inter', sans-serif;
-            font-size: 0.7rem;
-            letter-spacing: 0.2em;
-            text-transform: uppercase;
-            color: var(--accent);
+        .chapters-header h2 {
+            font-size: 1.75rem;
+            font-weight: 500;
             margin-bottom: 0.5rem;
         }
         
-        /* Definition boxes */
-        .definition {
-            background: var(--accent-light);
-            border-left: 3px solid var(--accent);
-            padding: 1.25rem 1.5rem;
-            margin: 2rem 0;
-            border-radius: 0 8px 8px 0;
-            font-size: 0.95rem;
+        .chapters-header p {
+            color: var(--text-light);
+            font-size: 1.1rem;
         }
         
-        .definition strong {
-            color: var(--accent);
+        .chapter-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 1.5rem;
         }
         
-        /* Key finding boxes */
-        .finding {
+        .chapter-card {
             background: var(--card);
             border: 1px solid var(--border);
-            padding: 1.5rem;
-            margin: 2rem 0;
-            border-radius: 8px;
-            box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+            border-radius: 12px;
+            padding: 1.75rem;
+            text-decoration: none;
+            color: inherit;
+            transition: all 0.2s ease;
+            display: flex;
+            flex-direction: column;
         }
         
-        .finding h4 {
+        .chapter-card:hover {
+            text-decoration: none;
+            border-color: var(--accent);
+            box-shadow: 0 4px 20px rgba(0,0,0,0.06);
+            transform: translateY(-2px);
+        }
+        
+        .chapter-number {
             font-family: 'Inter', sans-serif;
-            font-size: 0.75rem;
+            font-size: 0.7rem;
             letter-spacing: 0.1em;
             text-transform: uppercase;
             color: var(--accent);
             margin-bottom: 0.75rem;
         }
         
-        .finding p { margin-bottom: 0; font-size: 1.05rem; }
-        
-        /* Comparison */
-        .comparison {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 1.5rem;
-            margin: 2rem 0;
+        .chapter-card h3 {
+            font-size: 1.25rem;
+            font-weight: 500;
+            margin-bottom: 0.75rem;
+            line-height: 1.3;
         }
         
-        .comparison-item {
-            background: var(--card);
-            border: 1px solid var(--border);
-            padding: 1.25rem;
-            border-radius: 8px;
-            text-align: center;
-        }
-        
-        .comparison-item h4 {
-            font-family: 'Inter', sans-serif;
-            font-size: 0.85rem;
-            margin-bottom: 0.5rem;
-        }
-        
-        .comparison-item p {
+        .chapter-card p {
             font-size: 0.95rem;
-            margin-bottom: 0;
             color: var(--text-light);
+            line-height: 1.6;
+            flex-grow: 1;
         }
         
-        .comparison-item.protected { border-color: var(--accent); }
-        .comparison-item.protected h4 { color: var(--accent); }
-        
-        .comparison-item.allergic { border-color: #c0392b; }
-        .comparison-item.allergic h4 { color: #c0392b; }
-        
-        /* Visual metaphor */
-        .metaphor {
-            background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
-            padding: 2rem;
-            border-radius: 12px;
-            margin: 2rem 0;
-            text-align: center;
-        }
-        
-        .metaphor .emoji {
-            font-size: 3rem;
-            margin-bottom: 1rem;
-        }
-        
-        .metaphor p {
-            font-size: 1rem;
-            color: var(--text-light);
-            margin-bottom: 0;
-        }
-        
-        /* Timeline */
-        .timeline {
-            margin: 2rem 0;
-            padding-left: 2rem;
-            border-left: 2px solid var(--accent-light);
-        }
-        
-        .timeline-item {
-            margin-bottom: 1.5rem;
-            position: relative;
-        }
-        
-        .timeline-item::before {
-            content: '';
-            position: absolute;
-            left: -2rem;
-            top: 0.5rem;
-            width: 12px;
-            height: 12px;
-            background: var(--accent);
-            border-radius: 50%;
-            margin-left: -5px;
-        }
-        
-        .timeline-item h4 {
+        .chapter-card .read-more {
             font-family: 'Inter', sans-serif;
             font-size: 0.85rem;
             color: var(--accent);
-            margin-bottom: 0.25rem;
+            margin-top: 1rem;
         }
         
-        .timeline-item p { margin-bottom: 0; font-size: 0.95rem; }
+        .chapter-card:hover .read-more { text-decoration: underline; }
+        
+        /* Visual teaser */
+        .visual-teaser {
+            background: linear-gradient(135deg, var(--accent-light) 0%, #ecfdf5 100%);
+            border-radius: 16px;
+            padding: 3rem 2rem;
+            margin: 3rem 0;
+            text-align: center;
+        }
+        
+        .visual-teaser h3 {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+        }
+        
+        .visual-teaser p {
+            max-width: 500px;
+            margin: 0 auto;
+            color: var(--text-light);
+        }
+        
+        /* Key finding preview */
+        .finding-preview {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1.5rem;
+            margin: 3rem 0;
+        }
+        
+        .finding-box {
+            padding: 1.5rem;
+            border-radius: 12px;
+            text-align: center;
+        }
+        
+        .finding-box.danger {
+            background: var(--danger-light);
+            border: 1px solid #fecaca;
+        }
+        
+        .finding-box.success {
+            background: var(--accent-light);
+            border: 1px solid #a7f3d0;
+        }
+        
+        .finding-box .emoji { font-size: 2.5rem; margin-bottom: 0.75rem; }
+        
+        .finding-box h4 {
+            font-family: 'Inter', sans-serif;
+            font-size: 0.9rem;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+        }
+        
+        .finding-box.danger h4 { color: var(--danger); }
+        .finding-box.success h4 { color: var(--accent); }
+        
+        .finding-box p {
+            font-size: 0.9rem;
+            color: var(--text-light);
+            margin: 0;
+        }
         
         /* Footer */
         footer {
             padding: 3rem 0;
             text-align: center;
-            background: var(--card);
             border-top: 1px solid var(--border);
-            margin-top: 2rem;
         }
         
         footer p {
             font-family: 'Inter', sans-serif;
             font-size: 0.85rem;
             color: var(--text-light);
-            max-width: 500px;
-            margin: 0 auto;
-        }
-        
-        footer a { color: var(--accent); }
-        
-        /* Navigation */
-        .toc {
-            background: var(--card);
-            border: 1px solid var(--border);
-            padding: 1.5rem;
-            border-radius: 8px;
-            margin: 2rem 0 3rem;
-        }
-        
-        .toc h3 {
-            font-family: 'Inter', sans-serif;
-            font-size: 0.75rem;
-            letter-spacing: 0.1em;
-            text-transform: uppercase;
-            color: var(--text-light);
-            margin: 0 0 1rem 0;
-        }
-        
-        .toc ol {
-            list-style: none;
-            counter-reset: toc;
-        }
-        
-        .toc li {
-            counter-increment: toc;
-            margin: 0.5rem 0;
-            font-size: 1rem;
-        }
-        
-        .toc li::before {
-            content: counter(toc) ".";
-            color: var(--accent);
-            font-weight: 500;
-            margin-right: 0.5rem;
-        }
-        
-        .toc a {
-            text-decoration: none;
-            color: var(--text);
-        }
-        
-        .toc a:hover { color: var(--accent); }
-        
-        /* Context box */
-        .context-box {
-            background: var(--card);
-            border: 1px solid var(--border);
-            padding: 1.5rem 2rem;
-            border-radius: 8px;
-            margin-bottom: 2rem;
-            font-size: 0.95rem;
-        }
-        
-        .context-box h3 {
-            font-family: 'Inter', sans-serif;
-            font-size: 0.75rem;
-            letter-spacing: 0.1em;
-            text-transform: uppercase;
-            color: var(--accent);
-            margin: 0 0 1rem 0;
-        }
-        
-        .context-box p {
-            margin-bottom: 1rem;
-            line-height: 1.7;
-        }
-        
-        /* Diagrams */
-        .diagram {
-            background: linear-gradient(135deg, #fafbfc 0%, #f5f6f8 100%);
-            border: 1px solid var(--border);
-            border-radius: 16px;
-            padding: 2rem;
-            margin: 2.5rem 0;
-            overflow-x: auto;
-            box-shadow: 0 4px 20px rgba(0,0,0,0.04);
-        }
-        
-        .diagram svg {
-            display: block;
-            max-width: 100%;
-            height: auto;
-            margin: 0 auto;
-        }
-        
-        .diagram-title {
-            font-family: 'Inter', sans-serif;
-            font-size: 13px;
-            font-weight: 600;
-            fill: var(--text);
-            letter-spacing: 0.02em;
-        }
-        
-        .diagram-label {
-            font-family: 'Inter', sans-serif;
-            font-size: 11px;
-            fill: #6b7280;
-        }
-        
-        .diagram-label-small {
-            font-family: 'Inter', sans-serif;
-            font-size: 10px;
-            fill: #9ca3af;
-        }
-        
-        .diagram-label-green {
-            font-family: 'Inter', sans-serif;
-            font-size: 11px;
-            font-weight: 600;
-            fill: #059669;
-        }
-        
-        .diagram-alert {
-            font-family: 'Inter', sans-serif;
-            font-size: 11px;
-            font-weight: 600;
-            fill: #dc2626;
-        }
-        
-        .diagram-success {
-            font-family: 'Inter', sans-serif;
-            font-size: 11px;
-            font-weight: 600;
-            fill: #059669;
-        }
-        
-        .diagram-caption {
-            text-align: center;
-            font-family: 'Inter', sans-serif;
-            font-size: 0.85rem;
-            color: var(--text-light);
-            margin-top: 1.25rem;
-            margin-bottom: 0;
-            line-height: 1.5;
-        }
-        
-        /* Subtle pulse animation for key elements */
-        @keyframes subtle-pulse {
-            0%, 100% { opacity: 1; }
-            50% { opacity: 0.7; }
-        }
-        
-        .pulse-slow {
-            animation: subtle-pulse 3s ease-in-out infinite;
         }
         
         /* Responsive */
         @media (max-width: 600px) {
-            body { font-size: 17px; }
-            .hero h1 { font-size: 2rem; }
-            h2 { font-size: 1.5rem; }
-            .comparison { grid-template-columns: 1fr; }
+            .hero h1 { font-size: 2.25rem; }
+            .finding-preview { grid-template-columns: 1fr; }
         }
     </style>
 </head>
 <body>
     <div class="container">
         <header class="hero">
-            <p class="label">Paper Explainer</p>
+            <p class="hero-label">A Science Explainer</p>
             <h1>Why Pet Shop Mice Don't Get Allergies</h1>
-            <p class="subtitle">And what that might mean for the allergy epidemic</p>
+            <p class="hero-subtitle">And what a messy environment might teach us about the allergy epidemic</p>
+            <p class="hero-meta">Based on research published in <a href="https://www.nature.com/articles/s41586-025-10001-5" target="_blank">Nature, January 2025</a></p>
         </header>
         
-        <div class="context-box">
-            <h3>What You're Reading</h3>
-            <p>This is a plain-English explainer of a scientific paper published in <em>Nature</em> in January 2025. The original research is dense, technical, and assumes expertise in immunology. This guide walks through the key findings for educated readers who aren't specialists.</p>
-            
-            <p><strong>The paper:</strong> "Environmentally driven immune imprinting protects against allergy"<br>
-            <strong>Authors:</strong> Lukas Teufel, Nicholas Shubin, Alexander Shenoy, and colleagues<br>
-            <strong>Institution:</strong> Yale School of Medicine<br>
-            <strong>Published:</strong> <em>Nature</em>, January 2025</p>
-            
-            <p style="margin-bottom: 0;"><a href="https://www.nature.com/articles/s41586-025-10001-5" target="_blank">→ Read the original paper</a></p>
+        <div class="context">
+            <h2>What You're Reading</h2>
+            <p>This is a plain-English explainer of a scientific paper. The original research is dense, technical, and assumes expertise in immunology. These pages walk through the key findings for curious readers who aren't specialists.</p>
+            <p>Each chapter tackles one concept. Start anywhere. Take your time.</p>
         </div>
         
-        <nav class="toc">
-            <h3>Contents</h3>
-            <ol>
-                <li><a href="#mystery">The Mystery</a> — Why allergies have exploded</li>
-                <li><a href="#experiment">The Experiment</a> — Pet shop mice vs laboratory mice</li>
-                <li><a href="#memory">The Surprise</a> — Immune systems that "remember" things they've never seen</li>
-                <li><a href="#window">The Window</a> — Why early life matters so much</li>
-                <li><a href="#reversal">The Reversal</a> — Allergies might not be permanent</li>
-                <li><a href="#meaning">What It Means</a> — The implications for humans</li>
-            </ol>
-        </nav>
+        <div class="finding-preview">
+            <div class="finding-box danger">
+                <div class="emoji">🧪</div>
+                <h4>Laboratory Mice</h4>
+                <p>Raised in sterile conditions. Naive immune systems. Highly susceptible to allergies.</p>
+            </div>
+            <div class="finding-box success">
+                <div class="emoji">🐭</div>
+                <h4>Pet Shop Mice</h4>
+                <p>Raised with germs. Educated immune systems. Protected from allergies.</p>
+            </div>
+        </div>
         
-        <main>
-            <!-- Section 1: The Mystery -->
-            <section id="mystery">
-                <p class="section-number">Part One</p>
-                <h2>The Mystery</h2>
-                
-                <p>Something strange has happened over the past century. Allergies — to food, to pollen, to dust — have exploded. Not just increased. <em>Exploded.</em></p>
-                
-                <p>The numbers tell the story. Allergic diseases now affect 30-40% of people in developed countries. Food allergies have roughly doubled in children over the past two decades. Asthma rates have tripled since the 1960s.</p>
-                
-                <p>Here's the puzzle: this rise has been far too fast to be explained by genetics. Our genes haven't changed in fifty years. Something in our <em>environment</em> has.</p>
-                
-                <div class="finding">
-                    <h4>The Three Observations</h4>
-                    <p>Scientists have noticed three patterns that point to environment, not genetics:</p>
-                    <ol style="margin-top: 0.75rem; padding-left: 1.5rem;">
-                        <li>Allergy rates vary wildly by location — even among genetically similar populations</li>
-                        <li>People who move from low-allergy regions to high-allergy regions start developing allergies</li>
-                        <li>The rise has been too rapid to be genetic evolution</li>
-                    </ol>
-                </div>
-                
-                <p>There's a popular theory for why this might be: the "hygiene hypothesis." The idea is that our immune systems evolved expecting a certain amount of microbial exposure — infections, bacteria, parasites — and modern cleanliness has disrupted that expectation.</p>
-                
-                <p>But until now, the mechanism was unclear. <em>How</em> exactly does early microbial exposure protect against allergies? And why does it matter so much when that exposure happens?</p>
-                
-                <p>A team of researchers decided to find out. Their tool: mice from the pet shop.</p>
-            </section>
+        <section class="chapters">
+            <div class="chapters-header">
+                <h2>The Chapters</h2>
+                <p>Click any card to begin</p>
+            </div>
             
-            <!-- Section 2: The Experiment -->
-            <section id="experiment">
-                <p class="section-number">Part Two</p>
-                <h2>The Experiment</h2>
-                
-                <p>If you've ever wondered about the lives of laboratory mice, here's the truth: they live in bubbles. Literally.</p>
-                
-                <p>Laboratory mice are raised in "specific pathogen-free" (SPF) conditions. Filtered air. Sterilised food and water. No contact with the outside world. These mice have immune systems that, immunologically speaking, resemble human babies — naive, inexperienced, untested.</p>
-                
-                <div class="definition">
-                    <strong>SPF mice:</strong> Laboratory mice raised in sterile conditions, with no exposure to common pathogens or diverse microbes. Their immune systems are essentially "blank slates."
-                </div>
-                
-                <p>Pet shop mice, by contrast, have lived. They've been exposed to viruses, bacteria, parasites — the full menagerie of microorganisms that mice (and humans) would normally encounter. When researchers tested them, they found dozens of different pathogens and a rich, diverse microbiome.</p>
-                
-                <!-- Two Mice Comparison -->
-                <div class="diagram">
-                    <svg viewBox="0 0 700 240" xmlns="http://www.w3.org/2000/svg">
-                        <defs>
-                            <linearGradient id="labGradient" x1="0%" y1="0%" x2="0%" y2="100%">
-                                <stop offset="0%" style="stop-color:#f9fafb;stop-opacity:1" />
-                                <stop offset="100%" style="stop-color:#f3f4f6;stop-opacity:1" />
-                            </linearGradient>
-                            <linearGradient id="petGradient" x1="0%" y1="0%" x2="0%" y2="100%">
-                                <stop offset="0%" style="stop-color:#ecfdf5;stop-opacity:1" />
-                                <stop offset="100%" style="stop-color:#d1fae5;stop-opacity:1" />
-                            </linearGradient>
-                            <filter id="cardShadow" x="-20%" y="-20%" width="140%" height="140%">
-                                <feDropShadow dx="0" dy="4" stdDeviation="8" flood-opacity="0.08"/>
-                            </filter>
-                        </defs>
-                        
-                        <!-- Lab Mouse Card -->
-                        <g filter="url(#cardShadow)">
-                            <rect x="30" y="30" width="295" height="180" rx="16" fill="url(#labGradient)"/>
-                        </g>
-                        <rect x="30" y="30" width="295" height="180" rx="16" fill="none" stroke="#e5e7eb" stroke-width="1"/>
-                        
-                        <!-- Lab icon circle -->
-                        <circle cx="177" cy="75" r="28" fill="#f3f4f6" stroke="#d1d5db" stroke-width="1"/>
-                        <text x="177" y="83" text-anchor="middle" style="font-size: 24px;">🧪</text>
-                        
-                        <text x="177" y="120" text-anchor="middle" class="diagram-title">Laboratory Mouse</text>
-                        
-                        <line x1="100" y1="132" x2="254" y2="132" stroke="#e5e7eb" stroke-width="1"/>
-                        
-                        <text x="177" y="155" text-anchor="middle" class="diagram-label">Sterile, filtered environment</text>
-                        <text x="177" y="172" text-anchor="middle" class="diagram-label">No pathogens · Minimal microbiome</text>
-                        
-                        <rect x="107" y="185" width="140" height="20" rx="10" fill="#fef2f2"/>
-                        <text x="177" y="199" text-anchor="middle" style="font-family: Inter, sans-serif; font-size: 10px; font-weight: 600; fill: #dc2626;">IMMUNE: NAIVE</text>
-                        
-                        <!-- Pet Shop Mouse Card -->
-                        <g filter="url(#cardShadow)">
-                            <rect x="375" y="30" width="295" height="180" rx="16" fill="url(#petGradient)"/>
-                        </g>
-                        <rect x="375" y="30" width="295" height="180" rx="16" fill="none" stroke="#a7f3d0" stroke-width="1"/>
-                        
-                        <!-- Pet icon circle -->
-                        <circle cx="522" cy="75" r="28" fill="#d1fae5" stroke="#6ee7b7" stroke-width="1"/>
-                        <text x="522" y="83" text-anchor="middle" style="font-size: 24px;">🐭</text>
-                        
-                        <text x="522" y="120" text-anchor="middle" class="diagram-title">Pet Shop Mouse</text>
-                        
-                        <line x1="445" y1="132" x2="599" y2="132" stroke="#a7f3d0" stroke-width="1"/>
-                        
-                        <text x="522" y="155" text-anchor="middle" class="diagram-label">Rich, natural environment</text>
-                        <text x="522" y="172" text-anchor="middle" class="diagram-label">Diverse pathogens · Complex microbiome</text>
-                        
-                        <rect x="452" y="185" width="140" height="20" rx="10" fill="#ecfdf5"/>
-                        <text x="522" y="199" text-anchor="middle" style="font-family: Inter, sans-serif; font-size: 10px; font-weight: 600; fill: #059669;">IMMUNE: EDUCATED</text>
-                    </svg>
-                </div>
-                
-                <p>The question: would pet shop mice be protected from allergies?</p>
-                
-                <h3>The Test</h3>
-                
-                <p>Researchers exposed both groups of mice to a common allergen — egg protein (ovalbumin) — through three different routes: the gut, the lungs, and the skin. They used substances called "adjuvants" that normally push the immune system towards an allergic response.</p>
-                
-                <p>Then they challenged the mice with the allergen and measured anaphylaxis — the severe allergic reaction that, in humans, can be life-threatening.</p>
-                
-                <div class="comparison">
-                    <div class="comparison-item allergic">
-                        <h4>🧪 Laboratory Mice</h4>
-                        <p>Severe anaphylactic shock. Dramatic temperature drop. Classic allergic response.</p>
-                    </div>
-                    <div class="comparison-item protected">
-                        <h4>🐭 Pet Shop Mice</h4>
-                        <p>Mild response. No significant temperature change. Protected.</p>
-                    </div>
-                </div>
-                
-                <p>The pet shop mice were protected. Every time, regardless of how the allergen was introduced.</p>
-                
-                <p>But here's where it gets interesting: the protection wasn't because the pet shop mice couldn't produce allergic antibodies. They could. They did. The protection came from something else.</p>
-            </section>
-            
-            <!-- Section 3: The Surprise -->
-            <section id="memory">
-                <p class="section-number">Part Three</p>
-                <h2>The Surprise</h2>
-                
-                <p>To understand what protected the pet shop mice, we need to talk about antibodies — and the two types that matter for allergies.</p>
-                
-                <div class="definition">
-                    <strong>IgE antibodies:</strong> The troublemakers. These are the antibodies that cause allergic reactions. When they encounter an allergen, they trigger mast cells to release histamine and other chemicals that cause itching, swelling, and in severe cases, anaphylaxis.
-                </div>
-                
-                <div class="definition">
-                    <strong>IgG antibodies:</strong> The peacekeepers. These are the antibodies your body normally makes to fight infections. Importantly, they can intercept allergens <em>before</em> they reach IgE-coated cells, preventing the allergic cascade.
-                </div>
-                
-                <p>Here's what the researchers found: pet shop mice produced both IgE <em>and</em> IgG against the allergen. But their IgG levels were far higher than laboratory mice — sometimes ten times higher. The ratio was completely different.</p>
-                
-                <p>Think of it like a race. In lab mice, the IgE antibodies get to the allergen first and trigger the reaction. In pet shop mice, the IgG antibodies intercept the allergen before IgE can cause problems. Same allergen, same IgE — different outcome.</p>
-                
-                <!-- Antibody Mechanism Diagram -->
-                <div class="diagram">
-                    <svg viewBox="0 0 700 320" xmlns="http://www.w3.org/2000/svg">
-                        <defs>
-                            <linearGradient id="allergenGrad" x1="0%" y1="0%" x2="100%" y2="100%">
-                                <stop offset="0%" style="stop-color:#fbbf24;stop-opacity:1" />
-                                <stop offset="100%" style="stop-color:#f59e0b;stop-opacity:1" />
-                            </linearGradient>
-                            <linearGradient id="dangerGrad" x1="0%" y1="0%" x2="0%" y2="100%">
-                                <stop offset="0%" style="stop-color:#fecaca;stop-opacity:1" />
-                                <stop offset="100%" style="stop-color:#fca5a5;stop-opacity:1" />
-                            </linearGradient>
-                            <linearGradient id="safeGrad" x1="0%" y1="0%" x2="0%" y2="100%">
-                                <stop offset="0%" style="stop-color:#a7f3d0;stop-opacity:1" />
-                                <stop offset="100%" style="stop-color:#6ee7b7;stop-opacity:1" />
-                            </linearGradient>
-                            <filter id="glow" x="-50%" y="-50%" width="200%" height="200%">
-                                <feGaussianBlur stdDeviation="3" result="coloredBlur"/>
-                                <feMerge>
-                                    <feMergeNode in="coloredBlur"/>
-                                    <feMergeNode in="SourceGraphic"/>
-                                </feMerge>
-                            </filter>
-                            <marker id="arrow2" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto">
-                                <path d="M0,0 L0,8 L8,4 z" fill="#9ca3af"/>
-                            </marker>
-                        </defs>
-                        
-                        <!-- Left Column: Lab Mouse -->
-                        <text x="175" y="28" text-anchor="middle" class="diagram-title">Laboratory Mouse</text>
-                        
-                        <!-- Allergen -->
-                        <circle cx="175" cy="70" r="22" fill="url(#allergenGrad)" filter="url(#glow)"/>
-                        <text x="175" y="76" text-anchor="middle" style="font-family: Inter; font-size: 11px; fill: #78350f; font-weight: 600;">Allergen</text>
-                        
-                        <!-- Flow arrow -->
-                        <path d="M175 95 L175 125" stroke="#d1d5db" stroke-width="2" marker-end="url(#arrow2)"/>
-                        
-                        <!-- IgG zone - sparse -->
-                        <rect x="115" y="135" width="120" height="35" rx="8" fill="#f3f4f6" stroke="#e5e7eb" stroke-width="1" stroke-dasharray="4,2"/>
-                        <circle cx="140" cy="152" r="6" fill="#d1d5db"/>
-                        <circle cx="175" cy="152" r="6" fill="#d1d5db"/>
-                        <circle cx="210" cy="152" r="6" fill="#d1d5db"/>
-                        <text x="175" y="185" text-anchor="middle" class="diagram-label">Sparse IgG — allergen passes through</text>
-                        
-                        <!-- Flow arrow -->
-                        <path d="M175 195 L175 215" stroke="#d1d5db" stroke-width="2" marker-end="url(#arrow2)"/>
-                        
-                        <!-- Mast cell activated -->
-                        <ellipse cx="175" cy="250" rx="55" ry="32" fill="url(#dangerGrad)" stroke="#f87171" stroke-width="2"/>
-                        <text x="175" y="245" text-anchor="middle" style="font-family: Inter; font-size: 10px; fill: #991b1b; font-weight: 500;">MAST CELL</text>
-                        <text x="175" y="258" text-anchor="middle" style="font-family: Inter; font-size: 9px; fill: #b91c1c;">IgE triggered</text>
-                        
-                        <!-- Explosion particles -->
-                        <circle cx="120" cy="235" r="4" fill="#fca5a5" class="pulse-slow"/>
-                        <circle cx="230" cy="240" r="3" fill="#fca5a5" class="pulse-slow"/>
-                        <circle cx="140" cy="275" r="3" fill="#fca5a5" class="pulse-slow"/>
-                        <circle cx="210" cy="270" r="4" fill="#fca5a5" class="pulse-slow"/>
-                        
-                        <!-- Result -->
-                        <rect x="120" y="290" width="110" height="24" rx="12" fill="#fef2f2" stroke="#fecaca" stroke-width="1"/>
-                        <text x="175" y="306" text-anchor="middle" style="font-family: Inter; font-size: 10px; fill: #dc2626; font-weight: 600;">ALLERGIC REACTION</text>
-                        
-                        <!-- Divider -->
-                        <line x1="350" y1="15" x2="350" y2="305" stroke="#e5e7eb" stroke-width="1" stroke-dasharray="8,4"/>
-                        
-                        <!-- Right Column: Pet Shop Mouse -->
-                        <text x="525" y="28" text-anchor="middle" class="diagram-title">Pet Shop Mouse</text>
-                        
-                        <!-- Allergen -->
-                        <circle cx="525" cy="70" r="22" fill="url(#allergenGrad)" filter="url(#glow)"/>
-                        <text x="525" y="76" text-anchor="middle" style="font-family: Inter; font-size: 11px; fill: #78350f; font-weight: 600;">Allergen</text>
-                        
-                        <!-- Flow arrow -->
-                        <path d="M525 95 L525 125" stroke="#d1d5db" stroke-width="2" marker-end="url(#arrow2)"/>
-                        
-                        <!-- IgG zone - dense shield -->
-                        <rect x="465" y="135" width="120" height="50" rx="12" fill="url(#safeGrad)" stroke="#34d399" stroke-width="2"/>
-                        <circle cx="485" cy="152" r="7" fill="#059669"/>
-                        <circle cx="505" cy="160" r="7" fill="#059669"/>
-                        <circle cx="525" cy="150" r="8" fill="#047857"/>
-                        <circle cx="545" cy="162" r="7" fill="#059669"/>
-                        <circle cx="565" cy="152" r="7" fill="#059669"/>
-                        <circle cx="495" cy="172" r="6" fill="#10b981"/>
-                        <circle cx="525" cy="175" r="6" fill="#10b981"/>
-                        <circle cx="555" cy="170" r="6" fill="#10b981"/>
-                        <text x="525" y="205" text-anchor="middle" class="diagram-label-green">Dense IgG — allergen intercepted</text>
-                        
-                        <!-- Block symbol -->
-                        <circle cx="525" cy="235" r="18" fill="#ecfdf5" stroke="#34d399" stroke-width="2"/>
-                        <text x="525" y="242" text-anchor="middle" style="font-size: 20px;">✓</text>
-                        
-                        <!-- Mast cell calm -->
-                        <ellipse cx="525" cy="275" rx="50" ry="25" fill="#f0fdf4" stroke="#86efac" stroke-width="1"/>
-                        <text x="525" y="278" text-anchor="middle" style="font-family: Inter; font-size: 10px; fill: #166534;">Mast cell inactive</text>
-                        
-                        <!-- Result -->
-                        <rect x="475" y="290" width="100" height="24" rx="12" fill="#ecfdf5" stroke="#a7f3d0" stroke-width="1"/>
-                        <text x="525" y="306" text-anchor="middle" style="font-family: Inter; font-size: 10px; fill: #059669; font-weight: 600;">PROTECTED</text>
-                    </svg>
-                    <p class="diagram-caption"><strong>The mechanism:</strong> Same allergen, same IgE levels — but pet shop mice have abundant IgG antibodies that intercept the allergen before it can trigger mast cells.</p>
-                </div>
-                
-                <div class="finding">
-                    <h4>The Key Finding</h4>
-                    <p>Protection wasn't about producing <em>less</em> IgE. It was about producing <em>more</em> IgG. The ratio of protective to allergic antibodies determined the outcome.</p>
-                </div>
-                
-                <h3>The Real Surprise</h3>
-                
-                <p>But here's the genuinely strange part. When researchers tested the pet shop mice <em>before</em> any allergen exposure, they found something unexpected:</p>
-                
-                <p><strong>The mice already had antibodies against the egg protein.</strong></p>
-                
-                <p>These mice had never seen chicken egg protein in their lives. They were bought from a pet shop. They'd eaten mouse food. Yet their immune systems already "recognised" it.</p>
-                
-                <p>How is this possible?</p>
-                
-                <div class="metaphor">
-                    <div class="emoji">🧩</div>
-                    <p><strong>The Stochastic Ensemble</strong><br>
-                    When you're exposed to thousands of different proteins from infections and microbes, your immune system builds a vast library of antibodies. By sheer probability, some of those antibodies will partially recognise things you've never actually encountered — because proteins share structural motifs. The pet shop mice had built such an enormous library that they had "cross-reactive" memory for almost anything.</p>
-                </div>
-                
-                <p>The same was true for T cells — another arm of the immune system. Pet shop mice had memory T cells that responded to the allergen, ready to produce the signals that drive IgG production rather than IgE.</p>
-                
-                <p>In other words, the messy, pathogen-rich environment of the pet shop had trained their immune systems to respond to <em>new</em> things with a protective response, rather than an allergic one.</p>
-            </section>
-            
-            <!-- Section 4: The Window -->
-            <section id="window">
-                <p class="section-number">Part Four</p>
-                <h2>The Window</h2>
-                
-                <p>Here's where the story takes a critical turn. The researchers asked a simple question: when does this protection get established?</p>
-                
-                <p>They designed a clever experiment. They took baby mice from pet shop parents and fostered them with laboratory mouse mothers — raising them from birth in sterile conditions, away from the microbial richness of the pet shop.</p>
-                
-                <div class="timeline">
-                    <div class="timeline-item">
-                        <h4>Day 0</h4>
-                        <p>Baby mice born to pet shop parents</p>
-                    </div>
-                    <div class="timeline-item">
-                        <h4>Day 1</h4>
-                        <p>Fostered to laboratory mouse mothers in sterile facility</p>
-                    </div>
-                    <div class="timeline-item">
-                        <h4>Adulthood</h4>
-                        <p>Exposed to allergen and challenged</p>
-                    </div>
-                </div>
-                
-                <p>The result: <strong>these fostered mice were no longer protected.</strong> Despite having pet shop genetics, they were just as susceptible to allergies as laboratory mice. The sterile environment had kept their immune systems in an "infant" state.</p>
-                
-                <p>The reverse experiment also worked. Laboratory mice raised with pet shop mothers or cagemates developed protection.</p>
-                
-                <div class="finding">
-                    <h4>Environment Trumps Genetics</h4>
-                    <p>It wasn't the genetic background of the mice that determined allergy susceptibility — it was the microbial environment they experienced in early life.</p>
-                </div>
-                
-                <h3>The Critical Period</h3>
-                
-                <p>The researchers then asked: is there a window of opportunity?</p>
-                
-                <p>They exposed pet shop mice to the allergen at two different ages: as newborns (day 7 of life) or as adults (day 56). All mice were challenged in adulthood.</p>
-                
-                <div class="comparison">
-                    <div class="comparison-item allergic">
-                        <h4>Sensitised as Babies</h4>
-                        <p>Severe allergic reaction. One-third died from anaphylaxis.</p>
-                    </div>
-                    <div class="comparison-item protected">
-                        <h4>Sensitised as Adults</h4>
-                        <p>Protected. Mild response. Strong IgG production.</p>
-                    </div>
-                </div>
-                
-                <p>Same mice. Same genetics. Completely different outcomes — depending on <em>when</em> they first encountered the allergen.</p>
-                
-                <p>Early in life, before the pet shop mice had accumulated their protective immune memory, they were vulnerable — just like laboratory mice, just like human infants. But once that memory was established, the window closed. They could no longer be made allergic through normal means.</p>
-                
-                <p>This mirrors what we see in humans. Most allergies develop in infancy and early childhood. Adults rarely develop new allergies. There appears to be a critical period during which the immune "thermostat" is set.</p>
-                
-                <!-- Critical Window Diagram -->
-                <div class="diagram">
-                    <svg viewBox="0 0 700 200" xmlns="http://www.w3.org/2000/svg">
-                        <defs>
-                            <linearGradient id="vulnerableGrad" x1="0%" y1="0%" x2="100%" y2="0%">
-                                <stop offset="0%" style="stop-color:#fecaca;stop-opacity:1" />
-                                <stop offset="100%" style="stop-color:#fde68a;stop-opacity:1" />
-                            </linearGradient>
-                            <linearGradient id="protectedGrad" x1="0%" y1="0%" x2="100%" y2="0%">
-                                <stop offset="0%" style="stop-color:#fde68a;stop-opacity:1" />
-                                <stop offset="100%" style="stop-color:#a7f3d0;stop-opacity:1" />
-                            </linearGradient>
-                            <linearGradient id="memoryGrad" x1="0%" y1="0%" x2="100%" y2="0%">
-                                <stop offset="0%" style="stop-color:#e5e7eb;stop-opacity:1" />
-                                <stop offset="100%" style="stop-color:#059669;stop-opacity:1" />
-                            </linearGradient>
-                            <marker id="arrow-g" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto">
-                                <path d="M0,1 L0,7 L7,4 z" fill="#059669"/>
-                            </marker>
-                        </defs>
-                        
-                        <!-- Memory accumulation bar at top -->
-                        <text x="350" y="25" text-anchor="middle" style="font-family: Inter; font-size: 10px; fill: #6b7280; letter-spacing: 0.05em;">IMMUNE MEMORY ACCUMULATING</text>
-                        <rect x="80" y="35" width="540" height="8" rx="4" fill="#f3f4f6"/>
-                        <rect x="80" y="35" width="540" height="8" rx="4" fill="url(#memoryGrad)"/>
-                        <path d="M600 39 L630 39" stroke="#059669" stroke-width="2" marker-end="url(#arrow-g)"/>
-                        
-                        <!-- Timeline bar -->
-                        <rect x="80" y="95" width="540" height="50" rx="25" fill="#f9fafb" stroke="#e5e7eb" stroke-width="1"/>
-                        
-                        <!-- Vulnerable zone -->
-                        <rect x="80" y="95" width="200" height="50" rx="25" fill="url(#vulnerableGrad)"/>
-                        <rect x="255" y="95" width="25" height="50" fill="#fde68a"/>
-                        
-                        <!-- Protected zone -->
-                        <rect x="280" y="95" width="340" height="50" rx="0 25 25 0" fill="url(#protectedGrad)"/>
-                        
-                        <!-- Birth marker -->
-                        <circle cx="80" cy="120" r="12" fill="#fff" stroke="#dc2626" stroke-width="3"/>
-                        <text x="80" y="165" text-anchor="middle" style="font-family: Inter; font-size: 11px; fill: #374151; font-weight: 500;">Birth</text>
-                        
-                        <!-- Adult marker -->
-                        <circle cx="620" cy="120" r="12" fill="#fff" stroke="#059669" stroke-width="3"/>
-                        <text x="620" y="165" text-anchor="middle" style="font-family: Inter; font-size: 11px; fill: #374151; font-weight: 500;">Adult</text>
-                        
-                        <!-- Zone labels -->
-                        <text x="180" y="115" text-anchor="middle" style="font-family: Inter; font-size: 10px; fill: #991b1b; font-weight: 600; letter-spacing: 0.03em;">VULNERABLE</text>
-                        <text x="180" y="130" text-anchor="middle" style="font-family: Inter; font-size: 9px; fill: #b91c1c;">Allergen → Allergy</text>
-                        
-                        <text x="450" y="115" text-anchor="middle" style="font-family: Inter; font-size: 10px; fill: #047857; font-weight: 600; letter-spacing: 0.03em;">PROTECTED</text>
-                        <text x="450" y="130" text-anchor="middle" style="font-family: Inter; font-size: 9px; fill: #059669;">Allergen → Protection</text>
-                        
-                        <!-- Immune library icons growing -->
-                        <rect x="100" y="70" width="8" height="12" rx="1" fill="#e5e7eb"/>
-                        <rect x="115" y="68" width="8" height="14" rx="1" fill="#d1d5db"/>
-                        
-                        <rect x="250" y="65" width="8" height="17" rx="1" fill="#86efac"/>
-                        <rect x="262" y="63" width="8" height="19" rx="1" fill="#6ee7b7"/>
-                        <rect x="274" y="66" width="8" height="16" rx="1" fill="#86efac"/>
-                        
-                        <rect x="450" y="60" width="8" height="22" rx="1" fill="#34d399"/>
-                        <rect x="462" y="58" width="8" height="24" rx="1" fill="#10b981"/>
-                        <rect x="474" y="61" width="8" height="21" rx="1" fill="#34d399"/>
-                        <rect x="486" y="56" width="8" height="26" rx="1" fill="#059669"/>
-                        <rect x="498" y="59" width="8" height="23" rx="1" fill="#10b981"/>
-                        <rect x="510" y="62" width="8" height="20" rx="1" fill="#34d399"/>
-                    </svg>
-                    <p class="diagram-caption"><strong>The critical window:</strong> Early in life, before immune memory accumulates, allergen exposure leads to allergy. Once the library is built, the same exposure leads to protection.</p>
-                </div>
-            </section>
-            
-            <!-- Section 5: The Reversal -->
-            <section id="reversal">
-                <p class="section-number">Part Five</p>
-                <h2>The Reversal</h2>
-                
-                <p>Now for perhaps the most surprising finding of all.</p>
-                
-                <p>The researchers took pet shop mice that had been made allergic early in life — during that vulnerable window — and gave them additional allergen exposure in adulthood.</p>
-                
-                <p>The expectation might be that this would make things worse. More exposure, more sensitisation, more severe allergies.</p>
-                
-                <p>Instead, the opposite happened.</p>
-                
-                <div class="finding">
-                    <h4>Allergies Can Be Reversed</h4>
-                    <p>Adult allergen exposure in pet shop mice <em>reversed</em> the allergic state established in infancy. Their IgG levels shot up while IgE stayed flat. The mice were no longer anaphylactic.</p>
-                </div>
-                
-                <p>This is not how we typically think about allergies. The conventional view is that allergic sensitisation is permanent — a lifelong configuration of the immune system. Once allergic, always allergic.</p>
-                
-                <p>But this study suggests otherwise. The allergic state is not indelible. It can be overwritten by the same mechanism that provides protection in the first place: the accumulation of cross-reactive immune memory that favours protective IgG responses.</p>
-                
-                <p>The catch: this reversal happened in mice whose immune systems had been "trained" by the pet shop environment. Laboratory mice, lacking that foundation, couldn't achieve the same reversal. The environmental education matters.</p>
-            </section>
-            
-            <!-- Section 6: What It Means -->
-            <section id="meaning">
-                <p class="section-number">Part Six</p>
-                <h2>What It Means</h2>
-                
-                <p>So what does mouse immunology tell us about human allergies?</p>
-                
-                <p>More than you might think. Previous studies have shown that laboratory mice have immune systems similar to human infants, while "wild" mice resemble healthy human adults. This study adds mechanistic depth to that observation.</p>
-                
-                <h3>The Hygiene Hypothesis, Refined</h3>
-                
-                <p>The "hygiene hypothesis" has been around for decades, but it's often misunderstood. It's not that dirt is good or that infections are beneficial. It's more nuanced than that.</p>
-                
-                <p>This study suggests the mechanism is <em>immune imprinting</em>. Diverse microbial exposure in early life builds a library of cross-reactive immune memory that biases the system towards protective responses. When a new antigen arrives — whether it's a harmless food protein or a pollen grain — the immune system already has partial memory of something similar. That memory guides the response towards IgG (protection) rather than IgE (allergy).</p>
-                
-                <!-- Library Diagram -->
-                <div class="diagram">
-                    <svg viewBox="0 0 700 260" xmlns="http://www.w3.org/2000/svg">
-                        <defs>
-                            <linearGradient id="shelfGrad" x1="0%" y1="0%" x2="0%" y2="100%">
-                                <stop offset="0%" style="stop-color:#f3f4f6;stop-opacity:1" />
-                                <stop offset="100%" style="stop-color:#e5e7eb;stop-opacity:1" />
-                            </linearGradient>
-                            <linearGradient id="fullShelfGrad" x1="0%" y1="0%" x2="0%" y2="100%">
-                                <stop offset="0%" style="stop-color:#d1fae5;stop-opacity:1" />
-                                <stop offset="100%" style="stop-color:#a7f3d0;stop-opacity:1" />
-                            </linearGradient>
-                        </defs>
-                        
-                        <!-- Empty Library -->
-                        <text x="165" y="25" text-anchor="middle" class="diagram-title">Sterile Environment</text>
-                        
-                        <!-- Bookshelf frame -->
-                        <rect x="40" y="40" width="250" height="170" rx="4" fill="none" stroke="#d1d5db" stroke-width="2"/>
-                        
-                        <!-- Shelves -->
-                        <rect x="40" y="95" width="250" height="4" fill="url(#shelfGrad)"/>
-                        <rect x="40" y="150" width="250" height="4" fill="url(#shelfGrad)"/>
-                        
-                        <!-- Few books - sparse -->
-                        <rect x="60" y="55" width="12" height="36" rx="2" fill="#d1d5db"/>
-                        <rect x="78" y="60" width="12" height="31" rx="2" fill="#e5e7eb"/>
-                        <rect x="96" y="58" width="12" height="33" rx="2" fill="#d1d5db"/>
-                        
-                        <rect x="200" y="110" width="12" height="36" rx="2" fill="#e5e7eb"/>
-                        <rect x="218" y="115" width="12" height="31" rx="2" fill="#d1d5db"/>
-                        
-                        <rect x="80" y="162" width="12" height="38" rx="2" fill="#d1d5db"/>
-                        
-                        <!-- Question mark for confusion -->
-                        <circle cx="165" cy="125" r="25" fill="#fef2f2" stroke="#fecaca" stroke-width="2"/>
-                        <text x="165" y="133" text-anchor="middle" style="font-size: 24px; fill: #dc2626;">?</text>
-                        
-                        <!-- Speech bubble -->
-                        <rect x="70" y="215" width="190" height="35" rx="8" fill="#fef2f2" stroke="#fecaca" stroke-width="1"/>
-                        <text x="165" y="237" text-anchor="middle" style="font-family: Inter; font-size: 11px; fill: #991b1b; font-style: italic;">"Unknown! Must be a threat!"</text>
-                        <polygon points="165,215 155,205 175,205" fill="#fef2f2" stroke="#fecaca" stroke-width="1"/>
-                        
-                        <!-- Result arrow -->
-                        <text x="165" y="195" text-anchor="middle" class="diagram-alert">→ IgE (allergic response)</text>
-                        
-                        
-                        <!-- Full Library -->
-                        <text x="535" y="25" text-anchor="middle" class="diagram-title">Rich Environment</text>
-                        
-                        <!-- Bookshelf frame -->
-                        <rect x="410" y="40" width="250" height="170" rx="4" fill="none" stroke="#34d399" stroke-width="2"/>
-                        
-                        <!-- Shelves -->
-                        <rect x="410" y="95" width="250" height="4" fill="url(#fullShelfGrad)"/>
-                        <rect x="410" y="150" width="250" height="4" fill="url(#fullShelfGrad)"/>
-                        
-                        <!-- Many books - packed! -->
-                        <rect x="420" y="50" width="9" height="41" rx="1" fill="#059669"/>
-                        <rect x="431" y="55" width="9" height="36" rx="1" fill="#10b981"/>
-                        <rect x="442" y="48" width="9" height="43" rx="1" fill="#047857"/>
-                        <rect x="453" y="52" width="9" height="39" rx="1" fill="#059669"/>
-                        <rect x="464" y="50" width="9" height="41" rx="1" fill="#10b981"/>
-                        <rect x="475" y="54" width="9" height="37" rx="1" fill="#047857"/>
-                        <rect x="486" y="49" width="9" height="42" rx="1" fill="#059669"/>
-                        <rect x="497" y="53" width="9" height="38" rx="1" fill="#10b981"/>
-                        <rect x="508" y="51" width="9" height="40" rx="1" fill="#059669"/>
-                        <rect x="519" y="48" width="9" height="43" rx="1" fill="#047857"/>
-                        <rect x="530" y="55" width="9" height="36" rx="1" fill="#10b981"/>
-                        <rect x="541" y="50" width="9" height="41" rx="1" fill="#059669"/>
-                        <rect x="552" y="52" width="9" height="39" rx="1" fill="#047857"/>
-                        <rect x="563" y="49" width="9" height="42" rx="1" fill="#10b981"/>
-                        <rect x="574" y="54" width="9" height="37" rx="1" fill="#059669"/>
-                        <rect x="585" y="51" width="9" height="40" rx="1" fill="#047857"/>
-                        <rect x="596" y="48" width="9" height="43" rx="1" fill="#10b981"/>
-                        <rect x="607" y="53" width="9" height="38" rx="1" fill="#059669"/>
-                        <rect x="618" y="50" width="9" height="41" rx="1" fill="#047857"/>
-                        <rect x="629" y="55" width="9" height="36" rx="1" fill="#10b981"/>
-                        <rect x="640" y="52" width="9" height="39" rx="1" fill="#059669"/>
-                        
-                        <!-- Second shelf books -->
-                        <rect x="420" y="105" width="9" height="41" rx="1" fill="#10b981"/>
-                        <rect x="431" y="108" width="9" height="38" rx="1" fill="#059669"/>
-                        <rect x="442" y="103" width="9" height="43" rx="1" fill="#047857"/>
-                        <rect x="453" y="107" width="9" height="39" rx="1" fill="#10b981"/>
-                        <rect x="464" y="105" width="9" height="41" rx="1" fill="#059669"/>
-                        <rect x="475" y="109" width="9" height="37" rx="1" fill="#047857"/>
-                        <rect x="486" y="104" width="9" height="42" rx="1" fill="#10b981"/>
-                        <rect x="497" y="108" width="9" height="38" rx="1" fill="#059669"/>
-                        <rect x="508" y="106" width="9" height="40" rx="1" fill="#047857"/>
-                        <rect x="519" y="103" width="9" height="43" rx="1" fill="#10b981"/>
-                        <rect x="530" y="110" width="9" height="36" rx="1" fill="#059669"/>
-                        <rect x="541" y="105" width="9" height="41" rx="1" fill="#047857"/>
-                        <rect x="552" y="107" width="9" height="39" rx="1" fill="#10b981"/>
-                        <rect x="563" y="104" width="9" height="42" rx="1" fill="#059669"/>
-                        <rect x="574" y="109" width="9" height="37" rx="1" fill="#047857"/>
-                        <rect x="585" y="106" width="9" height="40" rx="1" fill="#10b981"/>
-                        <rect x="596" y="103" width="9" height="43" rx="1" fill="#059669"/>
-                        <rect x="607" y="108" width="9" height="38" rx="1" fill="#047857"/>
-                        <rect x="618" y="105" width="9" height="41" rx="1" fill="#10b981"/>
-                        <rect x="629" y="110" width="9" height="36" rx="1" fill="#059669"/>
-                        <rect x="640" y="107" width="9" height="39" rx="1" fill="#047857"/>
-                        
-                        <!-- Third shelf books -->
-                        <rect x="420" y="160" width="9" height="41" rx="1" fill="#047857"/>
-                        <rect x="431" y="163" width="9" height="38" rx="1" fill="#10b981"/>
-                        <rect x="442" y="158" width="9" height="43" rx="1" fill="#059669"/>
-                        <rect x="453" y="162" width="9" height="39" rx="1" fill="#047857"/>
-                        <rect x="464" y="160" width="9" height="41" rx="1" fill="#10b981"/>
-                        <rect x="475" y="164" width="9" height="37" rx="1" fill="#059669"/>
-                        <rect x="486" y="159" width="9" height="42" rx="1" fill="#047857"/>
-                        <rect x="497" y="163" width="9" height="38" rx="1" fill="#10b981"/>
-                        <rect x="508" y="161" width="9" height="40" rx="1" fill="#059669"/>
-                        <rect x="519" y="158" width="9" height="43" rx="1" fill="#047857"/>
-                        <rect x="530" y="165" width="9" height="36" rx="1" fill="#10b981"/>
-                        <rect x="541" y="160" width="9" height="41" rx="1" fill="#059669"/>
-                        <rect x="552" y="162" width="9" height="39" rx="1" fill="#047857"/>
-                        <rect x="563" y="159" width="9" height="42" rx="1" fill="#10b981"/>
-                        <rect x="574" y="164" width="9" height="37" rx="1" fill="#059669"/>
-                        <rect x="585" y="161" width="9" height="40" rx="1" fill="#047857"/>
-                        <rect x="596" y="158" width="9" height="43" rx="1" fill="#10b981"/>
-                        <rect x="607" y="163" width="9" height="38" rx="1" fill="#059669"/>
-                        <rect x="618" y="160" width="9" height="41" rx="1" fill="#047857"/>
-                        <rect x="629" y="165" width="9" height="36" rx="1" fill="#10b981"/>
-                        <rect x="640" y="162" width="9" height="39" rx="1" fill="#059669"/>
-                        
-                        <!-- Speech bubble -->
-                        <rect x="440" y="215" width="190" height="35" rx="8" fill="#ecfdf5" stroke="#a7f3d0" stroke-width="1"/>
-                        <text x="535" y="237" text-anchor="middle" style="font-family: Inter; font-size: 11px; fill: #047857; font-style: italic;">"Ah, similar to record #4,271"</text>
-                        <polygon points="535,215 525,205 545,205" fill="#ecfdf5" stroke="#a7f3d0" stroke-width="1"/>
-                        
-                        <!-- Result arrow -->
-                        <text x="535" y="195" text-anchor="middle" class="diagram-success">→ IgG (protective response)</text>
-                    </svg>
-                    <p class="diagram-caption"><strong>The library analogy:</strong> A rich microbial environment builds a vast library of immune memories. When something new arrives, it gets matched to existing records — handled with calm familiarity, not panic.</p>
-                </div>
-                
-                <h3>The Implications</h3>
-                
-                <p>Several important points emerge:</p>
-                
-                <p><strong>Timing matters.</strong> Early life appears to be a critical window for immune education. This aligns with epidemiological evidence that children who grow up on farms, who have siblings, who attend nursery early, and who have pets tend to have lower rates of allergies.</p>
-                
-                <p><strong>It's about diversity, not specific infections.</strong> No single pathogen provided protection. It was the <em>cumulative</em> experience of diverse microbial exposure that built the protective cross-reactive memory.</p>
-                
-                <p><strong>Allergies may not be permanent.</strong> The finding that adult exposure could reverse early-life allergic sensitisation — at least in mice with environmental immune education — offers hope that the allergic state is more plastic than previously thought.</p>
-                
-                <p><strong>IgG is the key.</strong> Current allergy treatments focus on reducing IgE or blocking its effects. This study suggests an alternative approach: boosting protective IgG. This is, in fact, what happens in successful allergen immunotherapy — but the current treatments are slow and require years of injections.</p>
-                
-                <h3>What We Don't Know</h3>
-                
-                <p>This is mouse research, not human research. Mice are not people. Their immune systems are similar but not identical. The specific findings may not translate directly.</p>
-                
-                <p>We also don't know exactly which microbial exposures matter most, or how to safely recreate the "pet shop effect" in humans. Simply telling parents to raise their children in less clean environments isn't practical medical advice.</p>
-                
-                <p>But the principle — that early environmental exposure shapes the immune system's default response to new antigens — is powerful. It explains patterns we see in human populations and suggests new directions for prevention and treatment.</p>
-                
-                <div class="finding">
-                    <h4>The Bottom Line</h4>
-                    <p>Pet shop mice are protected from allergies not because of their genetics, but because of their environment. Diverse microbial exposure early in life builds an immune system that responds to new antigens with protection rather than allergy. This "imprinting" happens during a critical window. And remarkably, it might be reversible.</p>
-                </div>
-                
-                <p>The allergy epidemic may be, in part, a side effect of modernity — of clean water, antibiotics, smaller families, and sterile homes. Understanding the mechanism opens the door to doing something about it.</p>
-            </section>
-        </main>
+            <div class="chapter-grid">
+                <a href="the-problem.html" class="chapter-card">
+                    <span class="chapter-number">Chapter 1</span>
+                    <h3>The Allergy Epidemic</h3>
+                    <p>Allergies have exploded over the past century — far too fast to be explained by genetics. What changed?</p>
+                    <span class="read-more">Read chapter →</span>
+                </a>
+                
+                <a href="the-experiment.html" class="chapter-card">
+                    <span class="chapter-number">Chapter 2</span>
+                    <h3>The Pet Shop Experiment</h3>
+                    <p>Scientists compared mice from sterile labs to mice from pet shops. The results were clear — and surprising.</p>
+                    <span class="read-more">Read chapter →</span>
+                </a>
+                
+                <a href="how-antibodies-work.html" class="chapter-card">
+                    <span class="chapter-number">Chapter 3</span>
+                    <h3>IgE vs IgG: The Two Antibodies</h3>
+                    <p>Your body makes different types of antibodies. One causes allergic reactions. The other prevents them.</p>
+                    <span class="read-more">Read chapter →</span>
+                </a>
+                
+                <a href="immune-memory.html" class="chapter-card">
+                    <span class="chapter-number">Chapter 4</span>
+                    <h3>The Library Effect</h3>
+                    <p>How can your immune system "remember" something it's never seen? The answer involves cross-reactivity.</p>
+                    <span class="read-more">Read chapter →</span>
+                </a>
+                
+                <a href="the-window.html" class="chapter-card">
+                    <span class="chapter-number">Chapter 5</span>
+                    <h3>The Critical Window</h3>
+                    <p>There's a period early in life when the immune "thermostat" gets set. After that, it's harder to change.</p>
+                    <span class="read-more">Read chapter →</span>
+                </a>
+                
+                <a href="the-reversal.html" class="chapter-card">
+                    <span class="chapter-number">Chapter 6</span>
+                    <h3>Can Allergies Be Undone?</h3>
+                    <p>The conventional view: once allergic, always allergic. This research suggests otherwise.</p>
+                    <span class="read-more">Read chapter →</span>
+                </a>
+                
+                <a href="implications.html" class="chapter-card">
+                    <span class="chapter-number">Chapter 7</span>
+                    <h3>What It Means For Humans</h3>
+                    <p>Mice aren't people. But the principles might translate — and point toward new treatments.</p>
+                    <span class="read-more">Read chapter →</span>
+                </a>
+                
+                <a href="glossary.html" class="chapter-card" style="background: #f9fafb;">
+                    <span class="chapter-number">Reference</span>
+                    <h3>Glossary</h3>
+                    <p>Quick definitions for all the technical terms: antibodies, antigens, mast cells, and more.</p>
+                    <span class="read-more">View glossary →</span>
+                </a>
+            </div>
+        </section>
+        
+        <div class="visual-teaser">
+            <h3>Visual Explanations Throughout</h3>
+            <p>Each chapter includes diagrams that make complex immunology accessible. No biology degree required.</p>
+        </div>
     </div>
     
     <footer>
         <div class="container">
-            <p>
-                Based on: <a href="https://www.nature.com/articles/s41586-025-10001-5" target="_blank">"Environmentally driven immune imprinting protects against allergy"</a><br>
-                Published in <em>Nature</em>, 2025<br><br>
-                This explainer aims to make the research accessible to non-scientists. For the full technical details, methodology, and caveats, please read the original paper.
-            </p>
+            <p>Based on: "Environmentally driven immune imprinting protects against allergy" · <em>Nature</em>, 2025<br>
+            <a href="https://www.nature.com/articles/s41586-025-10001-5" target="_blank">Read the original paper →</a></p>
         </div>
     </footer>
 </body>
