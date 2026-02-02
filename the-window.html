@@ -1,0 +1,385 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Critical Window — Chapter 5</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        
+        :root {
+            --text: #1a1a2e;
+            --text-light: #4a4a6a;
+            --accent: #059669;
+            --accent-light: #d1fae5;
+            --danger: #dc2626;
+            --danger-light: #fef2f2;
+            --purple: #7c3aed;
+            --purple-light: #ede9fe;
+            --bg: #fdfdf9;
+            --card: #ffffff;
+            --border: #e8e8e0;
+        }
+        
+        html { scroll-behavior: smooth; }
+        
+        body {
+            font-family: 'Newsreader', Georgia, serif;
+            background: var(--bg);
+            color: var(--text);
+            font-size: 19px;
+            line-height: 1.75;
+        }
+        
+        a { color: var(--accent); text-decoration: none; }
+        a:hover { text-decoration: underline; }
+        
+        nav {
+            padding: 1.25rem 1.5rem;
+            border-bottom: 1px solid var(--border);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-family: 'Inter', sans-serif;
+            font-size: 0.85rem;
+        }
+        
+        nav a { color: var(--text-light); }
+        nav a:hover { color: var(--accent); text-decoration: none; }
+        
+        .nav-chapter { color: var(--text); font-weight: 500; }
+        
+        .container {
+            max-width: 720px;
+            margin: 0 auto;
+            padding: 0 1.5rem;
+        }
+        
+        .chapter-header {
+            padding: 4rem 0 3rem;
+            border-bottom: 1px solid var(--border);
+            margin-bottom: 3rem;
+        }
+        
+        .chapter-label {
+            font-family: 'Inter', sans-serif;
+            font-size: 0.75rem;
+            letter-spacing: 0.15em;
+            text-transform: uppercase;
+            color: var(--accent);
+            margin-bottom: 1rem;
+        }
+        
+        .chapter-header h1 {
+            font-size: 2.5rem;
+            font-weight: 500;
+            line-height: 1.2;
+            margin-bottom: 1rem;
+        }
+        
+        .chapter-subtitle {
+            font-size: 1.2rem;
+            color: var(--text-light);
+            font-style: italic;
+        }
+        
+        article { padding-bottom: 4rem; }
+        article p { margin-bottom: 1.5rem; }
+        
+        article h2 {
+            font-size: 1.5rem;
+            font-weight: 500;
+            margin: 3rem 0 1.5rem;
+        }
+        
+        .key-point {
+            background: var(--accent-light);
+            border-left: 3px solid var(--accent);
+            padding: 1.25rem 1.5rem;
+            margin: 2rem 0;
+            border-radius: 0 8px 8px 0;
+        }
+        
+        .key-point p { margin-bottom: 0; font-size: 1.05rem; }
+        
+        .diagram {
+            background: linear-gradient(135deg, #fafbfc 0%, #f5f6f8 100%);
+            border: 1px solid var(--border);
+            border-radius: 16px;
+            padding: 2rem;
+            margin: 2.5rem 0;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.04);
+        }
+        
+        .diagram svg {
+            display: block;
+            max-width: 100%;
+            height: auto;
+            margin: 0 auto;
+        }
+        
+        .diagram-caption {
+            text-align: center;
+            font-family: 'Inter', sans-serif;
+            font-size: 0.85rem;
+            color: var(--text-light);
+            margin-top: 1.25rem;
+            line-height: 1.5;
+        }
+        
+        .timeline {
+            position: relative;
+            padding: 2rem 0;
+            margin: 2rem 0;
+        }
+        
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 50%;
+            top: 0;
+            bottom: 0;
+            width: 3px;
+            background: linear-gradient(to bottom, var(--accent), var(--danger));
+            transform: translateX(-50%);
+        }
+        
+        .timeline-item {
+            display: flex;
+            align-items: flex-start;
+            margin: 1.5rem 0;
+        }
+        
+        .timeline-item:nth-child(odd) { flex-direction: row; }
+        .timeline-item:nth-child(even) { flex-direction: row-reverse; }
+        
+        .timeline-content {
+            width: 45%;
+            padding: 1rem 1.5rem;
+            background: var(--card);
+            border: 1px solid var(--border);
+            border-radius: 8px;
+        }
+        
+        .timeline-item:nth-child(odd) .timeline-content { margin-right: 5%; }
+        .timeline-item:nth-child(even) .timeline-content { margin-left: 5%; }
+        
+        .timeline-content h4 {
+            font-family: 'Inter', sans-serif;
+            font-size: 0.8rem;
+            color: var(--accent);
+            margin-bottom: 0.5rem;
+        }
+        
+        .timeline-content p {
+            font-size: 0.9rem;
+            margin-bottom: 0;
+        }
+        
+        .experiment-box {
+            background: var(--purple-light);
+            border: 1px solid #c4b5fd;
+            border-radius: 12px;
+            padding: 1.5rem 2rem;
+            margin: 2rem 0;
+        }
+        
+        .experiment-box h4 {
+            font-family: 'Inter', sans-serif;
+            font-size: 0.75rem;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            color: var(--purple);
+            margin-bottom: 0.75rem;
+        }
+        
+        .chapter-nav {
+            display: flex;
+            justify-content: space-between;
+            padding: 2rem 0;
+            border-top: 1px solid var(--border);
+            margin-top: 3rem;
+        }
+        
+        .chapter-nav a {
+            font-family: 'Inter', sans-serif;
+            font-size: 0.9rem;
+            color: var(--text-light);
+            display: flex;
+            flex-direction: column;
+            max-width: 45%;
+        }
+        
+        .chapter-nav a:hover { color: var(--accent); text-decoration: none; }
+        
+        .chapter-nav .label {
+            font-size: 0.75rem;
+            letter-spacing: 0.05em;
+            text-transform: uppercase;
+            margin-bottom: 0.25rem;
+        }
+        
+        .chapter-nav .title {
+            font-family: 'Newsreader', serif;
+            font-size: 1.1rem;
+            color: var(--text);
+        }
+        
+        .chapter-nav a:hover .title { color: var(--accent); }
+        .chapter-nav .next { text-align: right; }
+        
+        footer {
+            padding: 2rem 0;
+            text-align: center;
+            border-top: 1px solid var(--border);
+            font-family: 'Inter', sans-serif;
+            font-size: 0.8rem;
+            color: var(--text-light);
+        }
+        
+        @media (max-width: 600px) {
+            .chapter-header h1 { font-size: 2rem; }
+            .timeline::before { left: 20px; }
+            .timeline-item { flex-direction: column !important; }
+            .timeline-content { width: 100%; margin: 0 0 0 40px !important; }
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <a href="immune-memory.html">← Previous</a>
+        <span class="nav-chapter">Chapter 5 of 7</span>
+        <a href="the-reversal.html">Next →</a>
+    </nav>
+    
+    <div class="container">
+        <header class="chapter-header">
+            <p class="chapter-label">Chapter Five</p>
+            <h1>The Critical Window</h1>
+            <p class="chapter-subtitle">Why early life exposure matters so much</p>
+        </header>
+        
+        <article>
+            <p>The immune system isn't static. It develops and changes over time, especially in early life. There's a period when the immune system is being "programmed" — when it learns what to tolerate and what to attack.</p>
+            
+            <p>The researchers in this study discovered that microbial exposure during this critical window has outsized effects. Exposure later in life? Much less impactful.</p>
+            
+            <h2>The Timing Experiment</h2>
+            
+            <p>To test when exposure mattered most, the researchers designed a series of experiments with precise timing:</p>
+            
+            <div class="diagram">
+                <svg viewBox="0 0 600 300" xmlns="http://www.w3.org/2000/svg">
+                    <defs>
+                        <linearGradient id="windowGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+                            <stop offset="0%" style="stop-color:#d1fae5;stop-opacity:1" />
+                            <stop offset="40%" style="stop-color:#86efac;stop-opacity:1" />
+                            <stop offset="60%" style="stop-color:#fcd34d;stop-opacity:1" />
+                            <stop offset="100%" style="stop-color:#fecaca;stop-opacity:1" />
+                        </linearGradient>
+                    </defs>
+                    
+                    <!-- Title -->
+                    <text x="300" y="30" text-anchor="middle" style="font-family: Inter; font-size: 13px; font-weight: 600; fill: #1a1a2e;">Effect of Microbial Exposure by Timing</text>
+                    
+                    <!-- Timeline bar -->
+                    <rect x="50" y="60" width="500" height="20" rx="10" fill="url(#windowGrad)" stroke="#d1d5db"/>
+                    
+                    <!-- Timeline labels -->
+                    <text x="50" y="100" style="font-family: Inter; font-size: 10px; fill: #4a4a6a;">Birth</text>
+                    <text x="150" y="100" text-anchor="middle" style="font-family: Inter; font-size: 10px; fill: #047857; font-weight: 600;">Critical Window</text>
+                    <text x="350" y="100" text-anchor="middle" style="font-family: Inter; font-size: 10px; fill: #d97706;">Transition</text>
+                    <text x="500" y="100" text-anchor="middle" style="font-family: Inter; font-size: 10px; fill: #dc2626;">Adult</text>
+                    <text x="550" y="100" style="font-family: Inter; font-size: 10px; fill: #4a4a6a;">→</text>
+                    
+                    <!-- Three scenarios -->
+                    <!-- Early exposure -->
+                    <rect x="50" y="130" width="160" height="70" rx="8" fill="#d1fae5" stroke="#a7f3d0"/>
+                    <text x="130" y="150" text-anchor="middle" style="font-family: Inter; font-size: 10px; font-weight: 600; fill: #047857;">Early Exposure</text>
+                    <text x="130" y="168" text-anchor="middle" style="font-family: Inter; font-size: 9px; fill: #059669;">Microbial contact in</text>
+                    <text x="130" y="180" text-anchor="middle" style="font-family: Inter; font-size: 9px; fill: #059669;">first weeks of life</text>
+                    <text x="130" y="195" text-anchor="middle" style="font-family: Inter; font-size: 10px; font-weight: 600; fill: #047857;">✓ Strong protection</text>
+                    
+                    <!-- Late exposure -->
+                    <rect x="220" y="130" width="160" height="70" rx="8" fill="#fef3c7" stroke="#fcd34d"/>
+                    <text x="300" y="150" text-anchor="middle" style="font-family: Inter; font-size: 10px; font-weight: 600; fill: #d97706;">Delayed Exposure</text>
+                    <text x="300" y="168" text-anchor="middle" style="font-family: Inter; font-size: 9px; fill: #b45309;">Microbial contact after</text>
+                    <text x="300" y="180" text-anchor="middle" style="font-family: Inter; font-size: 9px; fill: #b45309;">weaning/transition</text>
+                    <text x="300" y="195" text-anchor="middle" style="font-family: Inter; font-size: 10px; font-weight: 600; fill: #d97706;">~ Partial protection</text>
+                    
+                    <!-- No exposure -->
+                    <rect x="390" y="130" width="160" height="70" rx="8" fill="#fef2f2" stroke="#fecaca"/>
+                    <text x="470" y="150" text-anchor="middle" style="font-family: Inter; font-size: 10px; font-weight: 600; fill: #991b1b;">Adult Exposure</text>
+                    <text x="470" y="168" text-anchor="middle" style="font-family: Inter; font-size: 9px; fill: #dc2626;">First microbial contact</text>
+                    <text x="470" y="180" text-anchor="middle" style="font-family: Inter; font-size: 9px; fill: #dc2626;">in adulthood</text>
+                    <text x="470" y="195" text-anchor="middle" style="font-family: Inter; font-size: 10px; font-weight: 600; fill: #991b1b;">✗ Minimal protection</text>
+                    
+                    <!-- Bottom explanation -->
+                    <rect x="100" y="220" width="400" height="60" rx="8" fill="#f9fafb" stroke="#e8e8e0"/>
+                    <text x="300" y="245" text-anchor="middle" style="font-family: Inter; font-size: 10px; fill: #4a4a6a;">The same microbial exposure produces different outcomes</text>
+                    <text x="300" y="262" text-anchor="middle" style="font-family: Inter; font-size: 10px; fill: #4a4a6a;">depending on <tspan font-weight="600">when</tspan> it happens in development.</text>
+                </svg>
+                <p class="diagram-caption">Timing matters enormously. Microbial exposure in early life produced lasting protection; the same exposure in adulthood had minimal effect.</p>
+            </div>
+            
+            <p>Laboratory mice that were co-housed with pet shop mice <em>early</em> in life gained significant protection against allergies. Mice co-housed as adults showed much weaker protection — even with the same duration of exposure.</p>
+            
+            <h2>Why Does Timing Matter?</h2>
+            
+            <p>The immune system goes through distinct developmental phases. In early life, it's in "learning mode" — actively building the repertoire of antibodies and establishing baseline tolerance levels. During this phase, environmental signals have outsized influence.</p>
+            
+            <p>Think of it like setting a thermostat. Early in life, you're calibrating the system — deciding what temperature the room should be. Once it's set, the thermostat works to maintain that temperature. You can still adjust it later, but it takes more effort and the system resists change.</p>
+            
+            <div class="experiment-box">
+                <h4>The Key Finding</h4>
+                <p>Mice exposed to microbes during the critical window developed IgG antibodies that persisted into adulthood and continued to provide cross-reactive protection against allergens — even long after the microbial exposure ended. The immune system had been "imprinted."</p>
+            </div>
+            
+            <h2>Imprinting vs Learning</h2>
+            
+            <p>The researchers used the term "immune imprinting" deliberately. Unlike regular immune learning (which happens throughout life), imprinting during the critical window creates patterns that are remarkably stable and persistent.</p>
+            
+            <p>This explains several puzzling observations:</p>
+            
+            <ul style="margin: 1.5rem 0; padding-left: 1.5rem;">
+                <li style="margin: 0.75rem 0;"><strong>Farm effect:</strong> Children raised on farms have lower allergy rates for life — even if they move to cities as adults.</li>
+                <li style="margin: 0.75rem 0;"><strong>Migration patterns:</strong> People who move from low-allergy to high-allergy regions are more affected if they move young.</li>
+                <li style="margin: 0.75rem 0;"><strong>Sibling effect:</strong> Having older siblings (who bring microbes home) reduces allergy risk — but mainly if you're exposed in infancy.</li>
+            </ul>
+            
+            <p>In each case, early exposure sets a pattern that persists. The window matters.</p>
+            
+            <h2>How Wide Is the Window?</h2>
+            
+            <p>In mice, the critical window appears to span the first few weeks of life — roughly equivalent to infancy and early childhood in humans. The window doesn't slam shut; it gradually closes, with exposure becoming less effective over time.</p>
+            
+            <div class="key-point">
+                <p><strong>The implication:</strong> Early childhood may be the most important period for establishing immune tolerance. Missing this window doesn't guarantee allergies — but it makes the immune system much harder to recalibrate later.</p>
+            </div>
+            
+            <p>This raises an obvious question: if someone misses the critical window, are they doomed? Can the immune imprint be changed?</p>
+            
+            <p>The research suggests the answer isn't entirely hopeless.</p>
+            
+            <nav class="chapter-nav">
+                <a href="immune-memory.html">
+                    <span class="label">Previous Chapter</span>
+                    <span class="title">The Library Effect</span>
+                </a>
+                <a href="the-reversal.html" class="next">
+                    <span class="label">Next Chapter</span>
+                    <span class="title">Can Allergies Be Undone?</span>
+                </a>
+            </nav>
+        </article>
+    </div>
+    
+    <footer>
+        <div class="container">
+            <p>Part of <a href="index.html">Why Pet Shop Mice Don't Get Allergies</a></p>
+        </div>
+    </footer>
+</body>
+</html>

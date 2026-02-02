@@ -1,0 +1,375 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Pet Shop Experiment — Chapter 2</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        
+        :root {
+            --text: #1a1a2e;
+            --text-light: #4a4a6a;
+            --accent: #059669;
+            --accent-light: #d1fae5;
+            --danger: #dc2626;
+            --danger-light: #fef2f2;
+            --bg: #fdfdf9;
+            --card: #ffffff;
+            --border: #e8e8e0;
+        }
+        
+        html { scroll-behavior: smooth; }
+        
+        body {
+            font-family: 'Newsreader', Georgia, serif;
+            background: var(--bg);
+            color: var(--text);
+            font-size: 19px;
+            line-height: 1.75;
+        }
+        
+        a { color: var(--accent); text-decoration: none; }
+        a:hover { text-decoration: underline; }
+        
+        nav {
+            padding: 1.25rem 1.5rem;
+            border-bottom: 1px solid var(--border);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-family: 'Inter', sans-serif;
+            font-size: 0.85rem;
+        }
+        
+        nav a { color: var(--text-light); }
+        nav a:hover { color: var(--accent); text-decoration: none; }
+        
+        .nav-chapter { color: var(--text); font-weight: 500; }
+        
+        .container {
+            max-width: 720px;
+            margin: 0 auto;
+            padding: 0 1.5rem;
+        }
+        
+        .chapter-header {
+            padding: 4rem 0 3rem;
+            border-bottom: 1px solid var(--border);
+            margin-bottom: 3rem;
+        }
+        
+        .chapter-label {
+            font-family: 'Inter', sans-serif;
+            font-size: 0.75rem;
+            letter-spacing: 0.15em;
+            text-transform: uppercase;
+            color: var(--accent);
+            margin-bottom: 1rem;
+        }
+        
+        .chapter-header h1 {
+            font-size: 2.5rem;
+            font-weight: 500;
+            line-height: 1.2;
+            margin-bottom: 1rem;
+        }
+        
+        .chapter-subtitle {
+            font-size: 1.2rem;
+            color: var(--text-light);
+            font-style: italic;
+        }
+        
+        article { padding-bottom: 4rem; }
+        article p { margin-bottom: 1.5rem; }
+        
+        article h2 {
+            font-size: 1.5rem;
+            font-weight: 500;
+            margin: 3rem 0 1.5rem;
+        }
+        
+        .key-point {
+            background: var(--accent-light);
+            border-left: 3px solid var(--accent);
+            padding: 1.25rem 1.5rem;
+            margin: 2rem 0;
+            border-radius: 0 8px 8px 0;
+        }
+        
+        .key-point p { margin-bottom: 0; font-size: 1.05rem; }
+        
+        .comparison {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1.5rem;
+            margin: 2rem 0;
+        }
+        
+        .compare-card {
+            padding: 1.5rem;
+            border-radius: 12px;
+            text-align: center;
+        }
+        
+        .compare-card.lab {
+            background: var(--danger-light);
+            border: 1px solid #fecaca;
+        }
+        
+        .compare-card.pet {
+            background: var(--accent-light);
+            border: 1px solid #a7f3d0;
+        }
+        
+        .compare-card .emoji { font-size: 2.5rem; margin-bottom: 0.75rem; }
+        
+        .compare-card h4 {
+            font-family: 'Inter', sans-serif;
+            font-size: 1rem;
+            font-weight: 600;
+            margin-bottom: 0.75rem;
+        }
+        
+        .compare-card.lab h4 { color: var(--danger); }
+        .compare-card.pet h4 { color: var(--accent); }
+        
+        .compare-card ul {
+            list-style: none;
+            font-size: 0.9rem;
+            color: var(--text-light);
+            text-align: left;
+        }
+        
+        .compare-card li { margin: 0.5rem 0; padding-left: 1.25rem; position: relative; }
+        .compare-card li::before { content: "•"; position: absolute; left: 0; }
+        
+        .diagram {
+            background: linear-gradient(135deg, #fafbfc 0%, #f5f6f8 100%);
+            border: 1px solid var(--border);
+            border-radius: 16px;
+            padding: 2rem;
+            margin: 2.5rem 0;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.04);
+        }
+        
+        .diagram svg {
+            display: block;
+            max-width: 100%;
+            height: auto;
+            margin: 0 auto;
+        }
+        
+        .diagram-caption {
+            text-align: center;
+            font-family: 'Inter', sans-serif;
+            font-size: 0.85rem;
+            color: var(--text-light);
+            margin-top: 1.25rem;
+            line-height: 1.5;
+        }
+        
+        .result-box {
+            background: var(--card);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 1.5rem 2rem;
+            margin: 2rem 0;
+        }
+        
+        .result-box h4 {
+            font-family: 'Inter', sans-serif;
+            font-size: 0.75rem;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            color: var(--accent);
+            margin-bottom: 1rem;
+        }
+        
+        .chapter-nav {
+            display: flex;
+            justify-content: space-between;
+            padding: 2rem 0;
+            border-top: 1px solid var(--border);
+            margin-top: 3rem;
+        }
+        
+        .chapter-nav a {
+            font-family: 'Inter', sans-serif;
+            font-size: 0.9rem;
+            color: var(--text-light);
+            display: flex;
+            flex-direction: column;
+            max-width: 45%;
+        }
+        
+        .chapter-nav a:hover { color: var(--accent); text-decoration: none; }
+        
+        .chapter-nav .label {
+            font-size: 0.75rem;
+            letter-spacing: 0.05em;
+            text-transform: uppercase;
+            margin-bottom: 0.25rem;
+        }
+        
+        .chapter-nav .title {
+            font-family: 'Newsreader', serif;
+            font-size: 1.1rem;
+            color: var(--text);
+        }
+        
+        .chapter-nav a:hover .title { color: var(--accent); }
+        .chapter-nav .next { text-align: right; }
+        
+        footer {
+            padding: 2rem 0;
+            text-align: center;
+            border-top: 1px solid var(--border);
+            font-family: 'Inter', sans-serif;
+            font-size: 0.8rem;
+            color: var(--text-light);
+        }
+        
+        @media (max-width: 600px) {
+            .chapter-header h1 { font-size: 2rem; }
+            .comparison { grid-template-columns: 1fr; }
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <a href="the-problem.html">← Previous</a>
+        <span class="nav-chapter">Chapter 2 of 7</span>
+        <a href="how-antibodies-work.html">Next →</a>
+    </nav>
+    
+    <div class="container">
+        <header class="chapter-header">
+            <p class="chapter-label">Chapter Two</p>
+            <h1>The Pet Shop Experiment</h1>
+            <p class="chapter-subtitle">A simple comparison that revealed something unexpected</p>
+        </header>
+        
+        <article>
+            <p>Most immunology research uses laboratory mice. These animals are bred for consistency — genetically identical, raised in sterile conditions, fed controlled diets. They're the scientific gold standard.</p>
+            
+            <p>But researchers in this study asked a provocative question: what if that sterility is the problem?</p>
+            
+            <h2>Two Very Different Mice</h2>
+            
+            <p>The researchers compared two populations of mice that couldn't be more different in how they were raised:</p>
+            
+            <div class="comparison">
+                <div class="compare-card lab">
+                    <div class="emoji">🧪</div>
+                    <h4>Laboratory Mice</h4>
+                    <ul>
+                        <li>Sterile cages, filtered air</li>
+                        <li>Pathogen-free from birth</li>
+                        <li>Controlled, uniform diet</li>
+                        <li>Genetically identical (inbred)</li>
+                        <li>Never exposed to wild microbes</li>
+                    </ul>
+                </div>
+                <div class="compare-card pet">
+                    <div class="emoji">🐭</div>
+                    <h4>Pet Shop Mice</h4>
+                    <ul>
+                        <li>Crowded conditions, shared air</li>
+                        <li>Exposed to pathogens constantly</li>
+                        <li>Variable diet, less controlled</li>
+                        <li>Genetically diverse (outbred)</li>
+                        <li>Rich microbial exposure from birth</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <p>The researchers then exposed both groups to common allergens — the same kinds of proteins that trigger hay fever, food allergies, and asthma in humans. They measured the immune response.</p>
+            
+            <h2>The Results Were Clear</h2>
+            
+            <div class="diagram">
+                <svg viewBox="0 0 600 220" xmlns="http://www.w3.org/2000/svg">
+                    <defs>
+                        <linearGradient id="barLab" x1="0%" y1="0%" x2="100%" y2="0%">
+                            <stop offset="0%" style="stop-color:#fca5a5;stop-opacity:1" />
+                            <stop offset="100%" style="stop-color:#f87171;stop-opacity:1" />
+                        </linearGradient>
+                        <linearGradient id="barPet" x1="0%" y1="0%" x2="100%" y2="0%">
+                            <stop offset="0%" style="stop-color:#6ee7b7;stop-opacity:1" />
+                            <stop offset="100%" style="stop-color:#34d399;stop-opacity:1" />
+                        </linearGradient>
+                    </defs>
+                    
+                    <text x="300" y="30" text-anchor="middle" style="font-family: Inter; font-size: 13px; font-weight: 600; fill: #1a1a2e;">Allergic Response After Allergen Exposure</text>
+                    
+                    <!-- Lab mice bar -->
+                    <text x="50" y="80" style="font-family: Inter; font-size: 11px; fill: #4a4a6a;">Lab Mice</text>
+                    <rect x="130" y="60" width="380" height="35" rx="6" fill="url(#barLab)" />
+                    <text x="520" y="83" style="font-family: Inter; font-size: 11px; font-weight: 600; fill: #991b1b;">High IgE</text>
+                    <text x="320" y="83" style="font-family: Inter; font-size: 10px; fill: white; font-weight: 500;">Strong allergic reaction</text>
+                    
+                    <!-- Pet shop mice bar -->
+                    <text x="50" y="140" style="font-family: Inter; font-size: 11px; fill: #4a4a6a;">Pet Shop Mice</text>
+                    <rect x="130" y="120" width="95" height="35" rx="6" fill="url(#barPet)" />
+                    <text x="235" y="143" style="font-family: Inter; font-size: 11px; font-weight: 600; fill: #047857;">Low IgE</text>
+                    <text x="178" y="143" style="font-family: Inter; font-size: 10px; fill: white; font-weight: 500;">Minimal</text>
+                    
+                    <!-- Labels -->
+                    <text x="130" y="185" style="font-family: Inter; font-size: 10px; fill: #9ca3af;">Low</text>
+                    <text x="490" y="185" style="font-family: Inter; font-size: 10px; fill: #9ca3af;">High</text>
+                    <line x1="130" y1="170" x2="510" y2="170" stroke="#e8e8e0" stroke-width="1" stroke-dasharray="4"/>
+                </svg>
+                <p class="diagram-caption">When exposed to the same allergens, laboratory mice produced high levels of IgE (the allergy antibody). Pet shop mice barely responded.</p>
+            </div>
+            
+            <p>Laboratory mice developed allergic responses. Pet shop mice didn't. Same species, same allergen exposure — radically different outcomes.</p>
+            
+            <h2>Ruling Out Genetics</h2>
+            
+            <p>The obvious question: is this just about genetics? Pet shop mice are genetically diverse; lab mice are inbred. Maybe the lab mice just have "allergy genes."</p>
+            
+            <p>The researchers tested this by taking laboratory mice and housing them with pet shop mice for several weeks — a process called "co-housing." The lab mice were exposed to the pet shop mice's microbes, essentially getting a crash course in the microbial world.</p>
+            
+            <div class="result-box">
+                <h4>The Co-Housing Result</h4>
+                <p>Lab mice that lived with pet shop mice developed partial protection against allergies. Their immune systems shifted. The same genetically identical mice, given microbial exposure, behaved more like pet shop mice.</p>
+            </div>
+            
+            <p>This ruled out genetics as the primary explanation. The protection came from the environment — specifically, from microbial exposure.</p>
+            
+            <h2>What Was Different?</h2>
+            
+            <p>The researchers dug deeper. What exactly was happening in the pet shop mice's immune systems that protected them?</p>
+            
+            <p>The answer came down to antibodies — but not the kind you might expect. Pet shop mice weren't just missing the "bad" antibodies that cause allergies. They had an abundance of a <em>different</em> type of antibody that seemed to be blocking the allergic response.</p>
+            
+            <div class="key-point">
+                <p><strong>The key finding:</strong> Pet shop mice weren't simply "lacking" an allergic response. They had an active protective mechanism — a different antibody response that prevented allergies from developing. This wasn't about something missing; it was about something present.</p>
+            </div>
+            
+            <p>To understand what that protective mechanism is, we need to look at how antibodies work — and why one type causes allergies while another prevents them.</p>
+            
+            <nav class="chapter-nav">
+                <a href="the-problem.html">
+                    <span class="label">Previous Chapter</span>
+                    <span class="title">The Allergy Epidemic</span>
+                </a>
+                <a href="how-antibodies-work.html" class="next">
+                    <span class="label">Next Chapter</span>
+                    <span class="title">IgE vs IgG: The Two Antibodies</span>
+                </a>
+            </nav>
+        </article>
+    </div>
+    
+    <footer>
+        <div class="container">
+            <p>Part of <a href="index.html">Why Pet Shop Mice Don't Get Allergies</a></p>
+        </div>
+    </footer>
+</body>
+</html>

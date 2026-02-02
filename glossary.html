@@ -1,0 +1,314 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Glossary — Why Pet Shop Mice Don't Get Allergies</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        
+        :root {
+            --text: #1a1a2e;
+            --text-light: #4a4a6a;
+            --accent: #059669;
+            --accent-light: #d1fae5;
+            --bg: #fdfdf9;
+            --card: #ffffff;
+            --border: #e8e8e0;
+        }
+        
+        html { scroll-behavior: smooth; }
+        
+        body {
+            font-family: 'Newsreader', Georgia, serif;
+            background: var(--bg);
+            color: var(--text);
+            font-size: 19px;
+            line-height: 1.75;
+        }
+        
+        a { color: var(--accent); text-decoration: none; }
+        a:hover { text-decoration: underline; }
+        
+        nav {
+            padding: 1.25rem 1.5rem;
+            border-bottom: 1px solid var(--border);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-family: 'Inter', sans-serif;
+            font-size: 0.85rem;
+        }
+        
+        nav a { color: var(--text-light); }
+        nav a:hover { color: var(--accent); text-decoration: none; }
+        
+        .nav-chapter { color: var(--text); font-weight: 500; }
+        
+        .container {
+            max-width: 720px;
+            margin: 0 auto;
+            padding: 0 1.5rem;
+        }
+        
+        .chapter-header {
+            padding: 4rem 0 3rem;
+            border-bottom: 1px solid var(--border);
+            margin-bottom: 3rem;
+        }
+        
+        .chapter-label {
+            font-family: 'Inter', sans-serif;
+            font-size: 0.75rem;
+            letter-spacing: 0.15em;
+            text-transform: uppercase;
+            color: var(--accent);
+            margin-bottom: 1rem;
+        }
+        
+        .chapter-header h1 {
+            font-size: 2.5rem;
+            font-weight: 500;
+            line-height: 1.2;
+            margin-bottom: 1rem;
+        }
+        
+        .chapter-subtitle {
+            font-size: 1.2rem;
+            color: var(--text-light);
+            font-style: italic;
+        }
+        
+        article { padding-bottom: 4rem; }
+        
+        .glossary-section {
+            margin: 2rem 0;
+        }
+        
+        .glossary-section h2 {
+            font-family: 'Inter', sans-serif;
+            font-size: 0.85rem;
+            font-weight: 600;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            color: var(--accent);
+            border-bottom: 2px solid var(--accent);
+            padding-bottom: 0.5rem;
+            margin-bottom: 1.5rem;
+        }
+        
+        .term {
+            margin: 1.5rem 0;
+            padding-bottom: 1.5rem;
+            border-bottom: 1px solid var(--border);
+        }
+        
+        .term:last-child {
+            border-bottom: none;
+        }
+        
+        .term h3 {
+            font-size: 1.15rem;
+            font-weight: 500;
+            color: var(--text);
+            margin-bottom: 0.5rem;
+        }
+        
+        .term p {
+            margin-bottom: 0;
+            color: var(--text-light);
+        }
+        
+        .term .context {
+            font-size: 0.9rem;
+            font-style: italic;
+            margin-top: 0.5rem;
+        }
+        
+        .back-link {
+            background: var(--accent-light);
+            border: 1px solid #a7f3d0;
+            border-radius: 12px;
+            padding: 1.5rem 2rem;
+            text-align: center;
+            margin: 3rem 0;
+        }
+        
+        .back-link p {
+            margin-bottom: 0.75rem;
+        }
+        
+        .back-link a {
+            font-family: 'Inter', sans-serif;
+            font-weight: 500;
+        }
+        
+        footer {
+            padding: 2rem 0;
+            text-align: center;
+            border-top: 1px solid var(--border);
+            font-family: 'Inter', sans-serif;
+            font-size: 0.8rem;
+            color: var(--text-light);
+        }
+        
+        @media (max-width: 600px) {
+            .chapter-header h1 { font-size: 2rem; }
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <a href="implications.html">← Previous</a>
+        <span class="nav-chapter">Reference</span>
+        <a href="index.html">Home →</a>
+    </nav>
+    
+    <div class="container">
+        <header class="chapter-header">
+            <p class="chapter-label">Reference</p>
+            <h1>Glossary</h1>
+            <p class="chapter-subtitle">Key terms explained in plain language</p>
+        </header>
+        
+        <article>
+            <div class="glossary-section">
+                <h2>Antibodies</h2>
+                
+                <div class="term">
+                    <h3>Antibody</h3>
+                    <p>A Y-shaped protein made by the immune system that can recognise and bind to specific targets (called antigens). Different types of antibodies have different functions.</p>
+                </div>
+                
+                <div class="term">
+                    <h3>IgE (Immunoglobulin E)</h3>
+                    <p>The antibody type responsible for allergic reactions. IgE binds to mast cells and triggers histamine release when it encounters an allergen. High IgE levels against a substance = allergic to that substance.</p>
+                    <p class="context">In this research: Lab mice had high IgE responses to allergens; pet shop mice did not.</p>
+                </div>
+                
+                <div class="term">
+                    <h3>IgG (Immunoglobulin G)</h3>
+                    <p>The most common antibody type in blood. IgG can neutralise targets without triggering inflammation. When IgG binds an allergen before IgE does, allergic reactions are prevented.</p>
+                    <p class="context">In this research: Pet shop mice had diverse IgG libraries that could intercept allergens, blocking the IgE pathway.</p>
+                </div>
+            </div>
+            
+            <div class="glossary-section">
+                <h2>Immune Cells</h2>
+                
+                <div class="term">
+                    <h3>Mast Cell</h3>
+                    <p>A type of immune cell found in tissues (especially skin, lungs, and gut lining) that stores histamine and other inflammatory chemicals. Mast cells are coated with IgE antibodies. When an allergen binds to that IgE, the mast cell "degranulates" — releasing its contents.</p>
+                    <p class="context">Mast cell degranulation causes the immediate symptoms of allergic reactions: swelling, itching, sneezing, and in severe cases, anaphylaxis.</p>
+                </div>
+                
+                <div class="term">
+                    <h3>B Cell</h3>
+                    <p>The immune cell type that produces antibodies. When a B cell encounters something foreign, it can mature into a plasma cell that pumps out antibodies against that target.</p>
+                </div>
+                
+                <div class="term">
+                    <h3>Memory Cell</h3>
+                    <p>A long-lived immune cell that "remembers" a previous encounter. If the same target appears again, memory cells can rapidly ramp up the immune response. This is why allergies can persist — memory cells keep the response primed.</p>
+                </div>
+            </div>
+            
+            <div class="glossary-section">
+                <h2>Key Concepts</h2>
+                
+                <div class="term">
+                    <h3>Allergen</h3>
+                    <p>A normally harmless substance that triggers an allergic response in sensitised individuals. Common allergens include pollen, dust mite proteins, peanut proteins, and pet dander.</p>
+                </div>
+                
+                <div class="term">
+                    <h3>Antigen</h3>
+                    <p>Any substance that the immune system can recognise and respond to. All allergens are antigens, but not all antigens cause allergies — most trigger normal, non-allergic immune responses.</p>
+                </div>
+                
+                <div class="term">
+                    <h3>Cross-Reactivity</h3>
+                    <p>When an antibody made against one target also binds to a different (but structurally similar) target. This allows the immune system to recognise things it's never directly encountered.</p>
+                    <p class="context">In this research: IgG antibodies made against microbial proteins could cross-react with allergens, blocking them.</p>
+                </div>
+                
+                <div class="term">
+                    <h3>Degranulation</h3>
+                    <p>The process where a mast cell releases its contents (histamine and other chemicals) into surrounding tissue. This is the immediate trigger for allergic symptoms.</p>
+                </div>
+                
+                <div class="term">
+                    <h3>Histamine</h3>
+                    <p>A chemical released by mast cells during allergic reactions. Histamine causes blood vessels to dilate and become leaky, leading to swelling, redness, and itching. Antihistamine drugs block histamine's effects.</p>
+                </div>
+                
+                <div class="term">
+                    <h3>Sensitisation</h3>
+                    <p>The process of becoming allergic. During sensitisation, the immune system "learns" to make IgE antibodies against a particular allergen. After sensitisation, future exposures trigger allergic reactions.</p>
+                </div>
+            </div>
+            
+            <div class="glossary-section">
+                <h2>Research Terms</h2>
+                
+                <div class="term">
+                    <h3>Hygiene Hypothesis</h3>
+                    <p>The theory that reduced microbial exposure in modern environments contributes to increased allergy and autoimmune disease rates. First proposed in 1989 by David Strachan.</p>
+                    <p class="context">This research provides a potential mechanism for the hygiene hypothesis: insufficient microbial exposure = insufficient IgG library = inadequate allergen blocking.</p>
+                </div>
+                
+                <div class="term">
+                    <h3>Immune Imprinting</h3>
+                    <p>The concept that early-life immune experiences create patterns that persist into adulthood. Unlike regular learning (which continues throughout life), imprinting happens during a critical window and is harder to modify later.</p>
+                    <p class="context">The title of the research paper: "Environmentally driven immune imprinting protects against allergy."</p>
+                </div>
+                
+                <div class="term">
+                    <h3>Critical Window</h3>
+                    <p>A period during development when an organism is especially sensitive to environmental influences. For immune imprinting, this appears to be early infancy. Exposures during this window have outsized, lasting effects.</p>
+                </div>
+                
+                <div class="term">
+                    <h3>Co-Housing</h3>
+                    <p>An experimental technique where mice from different backgrounds are housed together, allowing them to share microbes through contact and environmental exposure.</p>
+                    <p class="context">In this research: Laboratory mice co-housed with pet shop mice acquired some of their protective immunity.</p>
+                </div>
+                
+                <div class="term">
+                    <h3>Microbiome</h3>
+                    <p>The collection of all microorganisms (bacteria, fungi, viruses) living in and on a body. The gut microbiome is particularly important for immune development.</p>
+                </div>
+            </div>
+            
+            <div class="glossary-section">
+                <h2>Mouse Types</h2>
+                
+                <div class="term">
+                    <h3>Laboratory Mice (SPF Mice)</h3>
+                    <p>"Specific Pathogen Free" mice raised in sterile conditions. Genetically identical (inbred), with minimal microbial exposure. Standard for scientific research due to their consistency.</p>
+                    <p class="context">In this research: Lab mice developed strong allergic responses when exposed to allergens.</p>
+                </div>
+                
+                <div class="term">
+                    <h3>Pet Shop Mice</h3>
+                    <p>Mice raised in commercial pet shop conditions — crowded, genetically diverse (outbred), with rich microbial exposure. Much closer to "wild" conditions than laboratory mice.</p>
+                    <p class="context">In this research: Pet shop mice were protected from allergies due to their diverse IgG antibody library.</p>
+                </div>
+            </div>
+            
+            <div class="back-link">
+                <p>Ready to explore the chapters?</p>
+                <a href="index.html">← Return to the main page</a>
+            </div>
+        </article>
+    </div>
+    
+    <footer>
+        <div class="container">
+            <p>Part of <a href="index.html">Why Pet Shop Mice Don't Get Allergies</a></p>
+        </div>
+    </footer>
+</body>
+</html>
