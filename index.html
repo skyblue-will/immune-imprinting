@@ -282,6 +282,30 @@
         
         .toc a:hover { color: var(--accent); }
         
+        /* Context box */
+        .context-box {
+            background: var(--card);
+            border: 1px solid var(--border);
+            padding: 1.5rem 2rem;
+            border-radius: 8px;
+            margin-bottom: 2rem;
+            font-size: 0.95rem;
+        }
+        
+        .context-box h3 {
+            font-family: 'Inter', sans-serif;
+            font-size: 0.75rem;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            color: var(--accent);
+            margin: 0 0 1rem 0;
+        }
+        
+        .context-box p {
+            margin-bottom: 1rem;
+            line-height: 1.7;
+        }
+        
         /* Responsive */
         @media (max-width: 600px) {
             body { font-size: 17px; }
@@ -294,10 +318,22 @@
 <body>
     <div class="container">
         <header class="hero">
-            <p class="label">Explaining the Science</p>
+            <p class="label">Paper Explainer</p>
             <h1>Why Pet Shop Mice Don't Get Allergies</h1>
-            <p class="subtitle">A plain-English guide to a Nature paper that might change how we think about the allergy epidemic</p>
+            <p class="subtitle">And what that might mean for the allergy epidemic</p>
         </header>
+        
+        <div class="context-box">
+            <h3>What You're Reading</h3>
+            <p>This is a plain-English explainer of a scientific paper published in <em>Nature</em> in January 2025. The original research is dense, technical, and assumes expertise in immunology. This guide walks through the key findings for educated readers who aren't specialists.</p>
+            
+            <p><strong>The paper:</strong> "Environmentally driven immune imprinting protects against allergy"<br>
+            <strong>Authors:</strong> Lukas Teufel, Nicholas Shubin, Alexander Shenoy, and colleagues<br>
+            <strong>Institution:</strong> Yale School of Medicine<br>
+            <strong>Published:</strong> <em>Nature</em>, January 2025</p>
+            
+            <p style="margin-bottom: 0;"><a href="https://www.nature.com/articles/s41586-025-10001-5" target="_blank">→ Read the original paper</a></p>
+        </div>
         
         <nav class="toc">
             <h3>Contents</h3>
